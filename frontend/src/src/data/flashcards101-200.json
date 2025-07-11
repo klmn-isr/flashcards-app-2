@@ -1,0 +1,1002 @@
+[
+  {
+    "id": "101",
+    "type": "adverb",
+    "gender": "common",
+    "root": "ובכן",
+    "frequency": 12.17,
+    "hebrew": "ובכן",
+    "transcription": "увhэн",
+    "translation": "итак"
+  },
+  {
+    "id": "102",
+    "type": "adverb",
+    "gender": "common",
+    "root": "איפה",
+    "frequency": 12.15,
+    "hebrew": "איפה",
+    "transcription": "эйфо",
+    "translation": "где"
+  },
+  {
+    "id": "103",
+    "type": "preposition",
+    "gender": "common",
+    "root": "לה",
+    "frequency": 12.14,
+    "hebrew": "לה",
+    "transcription": "ла",
+    "translation": "ей"
+  },
+  {
+    "id": "104",
+    "type": "adverb",
+    "gender": "common",
+    "root": "קצת",
+    "frequency": 12.13,
+    "hebrew": "קצת",
+    "transcription": "кцат",
+    "translation": "немного"
+  },
+  {
+    "id": "105",
+    "type": "pronoun",
+    "gender": "masculine",
+    "root": "מישהו",
+    "frequency": 12.11,
+    "hebrew": "מישהו",
+    "transcription": "мишэху",
+    "translation": "кто-то"
+  },
+  {
+    "id": "106",
+    "type": "pronoun",
+    "gender": "masculine",
+    "root": "אותם",
+    "frequency": 12.10,
+    "hebrew": "אותם",
+    "transcription": "отам",
+    "translation": "их"
+  },
+  {
+    "id": "107",
+    "type": "interjection",
+    "gender": "common",
+    "root": "לעזאזל",
+    "frequency": 12.07,
+    "hebrew": "לעזאזל",
+    "transcription": "лаазазэль",
+    "translation": "черт"
+  },
+  {
+    "id": "108",
+    "type": "interjection",
+    "gender": "common",
+    "root": "אה",
+    "frequency": 12.07,
+    "hebrew": "אה",
+    "transcription": "ах",
+    "translation": "ах"
+  },
+  {
+    "id": "109",
+    "type": "verb",
+    "gender": "common",
+    "root": "לראות",
+    "frequency": 12.05,
+    "hebrew": "לראות",
+    "transcription": "лирот",
+    "translation": "видеть"
+  },
+  {
+    "id": "110",
+    "type": "adverb",
+    "gender": "common",
+    "root": "הנה",
+    "frequency": 12.03,
+    "hebrew": "הנה",
+    "transcription": "hинэ",
+    "translation": "вот"
+  },
+  {
+    "id": "111",
+    "type": "verb",
+    "gender": "feminine",
+    "root": "הייתה",
+    "frequency": 12.03,
+    "hebrew": "הייתה",
+    "transcription": "hайта",
+    "translation": "была"
+  },
+  {
+    "id": "112",
+    "type": "adverb",
+    "gender": "common",
+    "root": "פה",
+    "frequency": 12.02,
+    "hebrew": "פה",
+    "transcription": "по",
+    "translation": "здесь"
+  },
+  {
+    "id": "113",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "אבא",
+    "frequency": 12.01,
+    "hebrew": "אבא",
+    "transcription": "аба",
+    "translation": "папа"
+  },
+  {
+    "id": "114",
+    "type": "pronoun",
+    "gender": "masculine",
+    "root": "הכל",
+    "frequency": 12.01,
+    "hebrew": "הכל",
+    "transcription": "hаколь",
+    "translation": "все"
+  },
+  {
+    "id": "115",
+    "type": "verb",
+    "gender": "common",
+    "root": "ללכת",
+    "frequency": 12.00,
+    "hebrew": "ללכת",
+    "transcription": "лалэхэт",
+    "translation": "ходить"
+  },
+  {
+    "id": "116",
+    "type": "preposition",
+    "gender": "common",
+    "root": "בכל",
+    "frequency": 12.00,
+    "hebrew": "בכל",
+    "transcription": "бэhоль",
+    "translation": "во всем"
+  },
+  {
+    "id": "117",
+    "type": "conjunction",
+    "gender": "common",
+    "root": "שהיא",
+    "frequency": 11.99,
+    "hebrew": "שהיא",
+    "transcription": "шэhи",
+    "translation": "что она"
+  },
+  {
+    "id": "118",
+    "type": "verb",
+    "gender": "feminine",
+    "root": "צריכה",
+    "frequency": 11.98,
+    "hebrew": "צריכה",
+    "transcription": "цариха",
+    "translation": "нужна"
+  },
+  {
+    "id": "119",
+    "type": "adverb",
+    "gender": "common",
+    "root": "בדיוק",
+    "frequency": 11.97,
+    "hebrew": "בדיוק",
+    "transcription": "бэдиюк",
+    "translation": "точно"
+  },
+  {
+    "id": "120",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "אנשים",
+    "frequency": 11.96,
+    "hebrew": "אנשים",
+    "transcription": "анашим",
+    "translation": "люди"
+  },
+  {
+    "id": "121",
+    "type": "adverb",
+    "gender": "common",
+    "root": "אף",
+    "frequency": 11.96,
+    "hebrew": "אף",
+    "transcription": "аф",
+    "translation": "даже"
+  },
+  {
+    "id": "122",
+    "type": "verb",
+    "gender": "common",
+    "root": "לדבר",
+    "frequency": 11.95,
+    "hebrew": "לדבר",
+    "transcription": "лэдабэр",
+    "translation": "говорить"
+  },
+  {
+    "id": "123",
+    "type": "verb",
+    "gender": "masculine",
+    "root": "חייב",
+    "frequency": 11.94,
+    "hebrew": "חייב",
+    "transcription": "хаяв",
+    "translation": "должен"
+  },
+  {
+    "id": "124",
+    "type": "adverb",
+    "gender": "common",
+    "root": "שוב",
+    "frequency": 11.94,
+    "hebrew": "שוב",
+    "transcription": "шув",
+    "translation": "снова"
+  },
+  {
+    "id": "125",
+    "type": "verb",
+    "gender": "masculine",
+    "root": "חשבתי",
+    "frequency": 11.93,
+    "hebrew": "חשבתי",
+    "transcription": "хашавти",
+    "translation": "думал"
+  },
+  {
+    "id": "126",
+    "type": "verb",
+    "gender": "masculine",
+    "root": "היית",
+    "frequency": 11.93,
+    "hebrew": "היית",
+    "transcription": "hайта",
+    "translation": "был"
+  },
+  {
+    "id": "127",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "היום",
+    "frequency": 11.92,
+    "hebrew": "היום",
+    "transcription": "hайом",
+    "translation": "сегодня"
+  },
+  {
+    "id": "128",
+    "type": "conjunction",
+    "gender": "common",
+    "root": "שיש",
+    "frequency": 11.92,
+    "hebrew": "שיש",
+    "transcription": "шэйеh",
+    "translation": "что есть"
+  },
+  {
+    "id": "129",
+    "type": "adjective",
+    "gender": "masculine",
+    "root": "מצטער",
+    "frequency": 11.91,
+    "hebrew": "מצטער",
+    "transcription": "мицтаэр",
+    "translation": "извините"
+  },
+  {
+    "id": "130",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "מר",
+    "frequency": 11.91,
+    "hebrew": "מר",
+    "transcription": "мар",
+    "translation": "господин"
+  },
+  {
+    "id": "131",
+    "type": "verb",
+    "gender": "masculine",
+    "root": "צריכים",
+    "frequency": 11.91,
+    "hebrew": "צריכים",
+    "transcription": "царихим",
+    "translation": "нужны"
+  },
+  {
+    "id": "132",
+    "type": "verb",
+    "gender": "masculine",
+    "root": "בוא",
+    "frequency": 11.90,
+    "hebrew": "בוא",
+    "transcription": "бо",
+    "translation": "иди"
+  },
+  {
+    "id": "133",
+    "type": "verb",
+    "gender": "masculine",
+    "root": "היו",
+    "frequency": 11.88,
+    "hebrew": "היו",
+    "transcription": "хаю",
+    "translation": "были"
+  },
+  {
+    "id": "134",
+    "type": "conjunction",
+    "gender": "common",
+    "root": "שאת",
+    "frequency": 11.87,
+    "hebrew": "שאת",
+    "transcription": "шэат",
+    "translation": "что ты"
+  },
+  {
+    "id": "135",
+    "type": "verb",
+    "gender": "feminine",
+    "root": "חושבת",
+    "frequency": 11.86,
+    "hebrew": "חושבת",
+    "transcription": "хошэвэт",
+    "translation": "думаю"
+  },
+  {
+    "id": "136",
+    "type": "verb",
+    "gender": "masculine",
+    "root": "קרה",
+    "frequency": 11.85,
+    "hebrew": "קרה",
+    "transcription": "кара",
+    "translation": "случилось"
+  },
+  {
+    "id": "137",
+    "type": "adjective",
+    "gender": "feminine",
+    "root": "אחת",
+    "frequency": 11.84,
+    "hebrew": "אחת",
+    "transcription": "ахат",
+    "translation": "одна"
+  },
+  {
+    "id": "138",
+    "type": "preposition",
+    "gender": "common",
+    "root": "לזה",
+    "frequency": 11.84,
+    "hebrew": "לזה",
+    "transcription": "лэзэ",
+    "translation": "к этому"
+  },
+  {
+    "id": "139",
+    "type": "pronoun",
+    "gender": "feminine",
+    "root": "שלה",
+    "frequency": 11.84,
+    "hebrew": "שלה",
+    "transcription": "шэла",
+    "translation": "ее"
+  },
+  {
+    "id": "140",
+    "type": "noun",
+    "gender": "feminine",
+    "root": "אמא",
+    "frequency": 11.83,
+    "hebrew": "אמא",
+    "transcription": "има",
+    "translation": "мама"
+  },
+  {
+    "id": "141",
+    "type": "verb",
+    "gender": "masculine",
+    "root": "אוהב",
+    "frequency": 11.83,
+    "hebrew": "אוהב",
+    "transcription": "охэв",
+    "translation": "люблю"
+  },
+  {
+    "id": "142",
+    "type": "adjective",
+    "gender": "masculine",
+    "root": "שום",
+    "frequency": 11.81,
+    "hebrew": "שום",
+    "transcription": "шум",
+    "translation": "никакой"
+  },
+  {
+    "id": "143",
+    "type": "adjective",
+    "gender": "masculine",
+    "root": "אחר",
+    "frequency": 11.80,
+    "hebrew": "אחר",
+    "transcription": "ахэр",
+    "translation": "другой"
+  },
+  {
+    "id": "144",
+    "type": "adverb",
+    "gender": "common",
+    "root": "אפילו",
+    "frequency": 11.80,
+    "hebrew": "אפילו",
+    "transcription": "афилу",
+    "translation": "даже"
+  },
+  {
+    "id": "145",
+    "type": "pronoun",
+    "gender": "feminine",
+    "root": "ה",
+    "frequency": 11.79,
+    "hebrew": "ה",
+    "transcription": "хэ",
+    "translation": "она"
+  },
+  {
+    "id": "146",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "אדוני",
+    "frequency": 11.79,
+    "hebrew": "אדוני",
+    "transcription": "адонэй",
+    "translation": "господин"
+  },
+  {
+    "id": "147",
+    "type": "adverb",
+    "gender": "common",
+    "root": "תמיד",
+    "frequency": 11.78,
+    "hebrew": "תמיד",
+    "transcription": "тамид",
+    "translation": "всегда"
+  },
+  {
+    "id": "148",
+    "type": "verb",
+    "gender": "masculine",
+    "root": "יכולים",
+    "frequency": 11.77,
+    "hebrew": "יכולים",
+    "transcription": "яхолим",
+    "translation": "могут"
+  },
+  {
+    "id": "149",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "יום",
+    "frequency": 11.76,
+    "hebrew": "יום",
+    "transcription": "йом",
+    "translation": "день"
+  },
+  {
+    "id": "150",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "חבר",
+    "frequency": 11.75,
+    "hebrew": "חבר",
+    "transcription": "хавэр",
+    "translation": "друг"
+  },
+  {
+    "id": "151",
+    "type": "preposition",
+    "gender": "common",
+    "root": "להם",
+    "frequency": 11.75,
+    "hebrew": "להם",
+    "transcription": "лахэм",
+    "translation": "им"
+  },
+  {
+    "id": "152",
+    "type": "adjective",
+    "gender": "masculine",
+    "root": "בטוח",
+    "frequency": 11.72,
+    "hebrew": "בטוח",
+    "transcription": "батуах",
+    "translation": "уверен"
+  },
+  {
+    "id": "153",
+    "type": "preposition",
+    "gender": "common",
+    "root": "בגלל",
+    "frequency": 11.72,
+    "hebrew": "בגלל",
+    "transcription": "бэгэлэль",
+    "translation": "из-за"
+  },
+  {
+    "id": "154",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "שלום",
+    "frequency": 11.72,
+    "hebrew": "שלום",
+    "transcription": "шалом",
+    "translation": "мир"
+  },
+  {
+    "id": "155",
+    "type": "adverb",
+    "gender": "common",
+    "root": "ואז",
+    "frequency": 11.71,
+    "hebrew": "ואז",
+    "transcription": "вааз",
+    "translation": "и тогда"
+  },
+  {
+    "id": "156",
+    "type": "adjective",
+    "gender": "masculine",
+    "root": "בטח",
+    "frequency": 11.71,
+    "hebrew": "בטח",
+    "transcription": "батах",
+    "translation": "конечно"
+  },
+  {
+    "id": "157",
+    "type": "verb",
+    "gender": "masculine",
+    "root": "קורה",
+    "frequency": 11.70,
+    "hebrew": "קורה",
+    "transcription": "корэ",
+    "translation": "происходит"
+  },
+  {
+    "id": "158",
+    "type": "pronoun",
+    "gender": "masculine",
+    "root": "האלה",
+    "frequency": 11.70,
+    "hebrew": "האלה",
+    "transcription": "хаэлэ",
+    "translation": "эти"
+  },
+  {
+    "id": "159",
+    "type": "preposition",
+    "gender": "common",
+    "root": "אחרי",
+    "frequency": 11.70,
+    "hebrew": "אחרי",
+    "transcription": "ахарэй",
+    "translation": "после"
+  },
+  {
+    "id": "160",
+    "type": "conjunction",
+    "gender": "common",
+    "root": "שהם",
+    "frequency": 11.69,
+    "hebrew": "שהם",
+    "transcription": "шэхэм",
+    "translation": "что они"
+  },
+  {
+    "id": "161",
+    "type": "adverb",
+    "gender": "common",
+    "root": "מדי",
+    "frequency": 11.69,
+    "hebrew": "מדי",
+    "transcription": "мэдэй",
+    "translation": "слишком"
+  },
+  {
+    "id": "162",
+    "type": "verb",
+    "gender": "masculine",
+    "root": "רואה",
+    "frequency": 11.69,
+    "hebrew": "רואה",
+    "transcription": "роэ",
+    "translation": "вижу"
+  },
+  {
+    "id": "163",
+    "type": "pronoun",
+    "gender": "feminine",
+    "root": "הזאת",
+    "frequency": 11.68,
+    "hebrew": "הזאת",
+    "transcription": "хазот",
+    "translation": "эта"
+  },
+  {
+    "id": "164",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "הזמן",
+    "frequency": 11.68,
+    "hebrew": "הזמן",
+    "transcription": "хазман",
+    "translation": "время"
+  },
+  {
+    "id": "165",
+    "type": "pronoun",
+    "gender": "masculine",
+    "root": "כולם",
+    "frequency": 11.68,
+    "hebrew": "כולם",
+    "transcription": "кулам",
+    "translation": "все"
+  },
+  {
+    "id": "166",
+    "type": "preposition",
+    "gender": "common",
+    "root": "איתך",
+    "frequency": 11.66,
+    "hebrew": "איתך",
+    "transcription": "итха",
+    "translation": "с тобой"
+  },
+  {
+    "id": "167",
+    "type": "verb",
+    "gender": "masculine",
+    "root": "אמר",
+    "frequency": 11.66,
+    "hebrew": "אמר",
+    "transcription": "амар",
+    "translation": "сказал"
+  },
+  {
+    "id": "168",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "רגע",
+    "frequency": 11.66,
+    "hebrew": "רגע",
+    "transcription": "рэга",
+    "translation": "момент"
+  },
+  {
+    "id": "169",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "צ",
+    "frequency": 11.65,
+    "hebrew": "צ",
+    "transcription": "цади",
+    "translation": "цади"
+  },
+  {
+    "id": "170",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "בן",
+    "frequency": 11.64,
+    "hebrew": "בן",
+    "transcription": "бэн",
+    "translation": "сын"
+  },
+  {
+    "id": "171",
+    "type": "conjunction",
+    "gender": "common",
+    "root": "ו",
+    "frequency": 11.63,
+    "hebrew": "ו",
+    "transcription": "вэ",
+    "translation": "и"
+  },
+  {
+    "id": "172",
+    "type": "conjunction",
+    "gender": "common",
+    "root": "שאנחנו",
+    "frequency": 11.63,
+    "hebrew": "שאנחנו",
+    "transcription": "шэанахну",
+    "translation": "что мы"
+  },
+  {
+    "id": "173",
+    "type": "verb",
+    "gender": "masculine",
+    "root": "אמרתי",
+    "frequency": 11.60,
+    "hebrew": "אמרתי",
+    "transcription": "амарти",
+    "translation": "сказал"
+  },
+  {
+    "id": "174",
+    "type": "adjective",
+    "gender": "masculine",
+    "root": "איזה",
+    "frequency": 11.58,
+    "hebrew": "איזה",
+    "transcription": "эйзэ",
+    "translation": "какой"
+  },
+  {
+    "id": "175",
+    "type": "preposition",
+    "gender": "common",
+    "root": "בו",
+    "frequency": 11.58,
+    "hebrew": "בו",
+    "transcription": "бо",
+    "translation": "в нем"
+  },
+  {
+    "id": "176",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "אדם",
+    "frequency": 11.57,
+    "hebrew": "אדם",
+    "transcription": "адам",
+    "translation": "человек"
+  },
+  {
+    "id": "177",
+    "type": "verb",
+    "gender": "masculine",
+    "root": "תראה",
+    "frequency": 11.56,
+    "hebrew": "תראה",
+    "transcription": "тирэ",
+    "translation": "посмотри"
+  },
+  {
+    "id": "178",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "דברים",
+    "frequency": 11.56,
+    "hebrew": "דברים",
+    "transcription": "дварим",
+    "translation": "вещи"
+  },
+  {
+    "id": "179",
+    "type": "verb",
+    "gender": "masculine",
+    "root": "מבין",
+    "frequency": 11.55,
+    "hebrew": "מבין",
+    "transcription": "мэвин",
+    "translation": "понимаю"
+  },
+  {
+    "id": "180",
+    "type": "adjective",
+    "gender": "feminine",
+    "root": "טובה",
+    "frequency": 11.53,
+    "hebrew": "טובה",
+    "transcription": "това",
+    "translation": "хорошая"
+  },
+  {
+    "id": "181",
+    "type": "preposition",
+    "gender": "common",
+    "root": "בשביל",
+    "frequency": 11.53,
+    "hebrew": "בשביל",
+    "transcription": "бишвиль",
+    "translation": "для"
+  },
+  {
+    "id": "182",
+    "type": "preposition",
+    "gender": "common",
+    "root": "בזה",
+    "frequency": 11.53,
+    "hebrew": "בזה",
+    "transcription": "бэзэ",
+    "translation": "в этом"
+  },
+  {
+    "id": "183",
+    "type": "noun",
+    "gender": "feminine",
+    "root": "דרך",
+    "frequency": 11.52,
+    "hebrew": "דרך",
+    "transcription": "дэрэх",
+    "translation": "путь"
+  },
+  {
+    "id": "184",
+    "type": "adverb",
+    "gender": "common",
+    "root": "אוקיי",
+    "frequency": 11.51,
+    "hebrew": "אוקיי",
+    "transcription": "окэй",
+    "translation": "окей"
+  },
+  {
+    "id": "185",
+    "type": "verb",
+    "gender": "common",
+    "root": "לעזור",
+    "frequency": 11.51,
+    "hebrew": "לעזור",
+    "transcription": "лаазор",
+    "translation": "помогать"
+  },
+  {
+    "id": "186",
+    "type": "preposition",
+    "gender": "common",
+    "root": "אותנו",
+    "frequency": 11.51,
+    "hebrew": "אותנו",
+    "transcription": "отану",
+    "translation": "нас"
+  },
+  {
+    "id": "187",
+    "type": "preposition",
+    "gender": "common",
+    "root": "בבית",
+    "frequency": 11.50,
+    "hebrew": "בבית",
+    "transcription": "бабайт",
+    "translation": "дома"
+  },
+  {
+    "id": "188",
+    "type": "verb",
+    "gender": "masculine",
+    "root": "בואו",
+    "frequency": 11.50,
+    "hebrew": "בואו",
+    "transcription": "боу",
+    "translation": "идите"
+  },
+  {
+    "id": "189",
+    "type": "adjective",
+    "gender": "masculine",
+    "root": "מספיק",
+    "frequency": 11.49,
+    "hebrew": "מספיק",
+    "transcription": "маспик",
+    "translation": "достаточно"
+  },
+  {
+    "id": "190",
+    "type": "interjection",
+    "gender": "common",
+    "root": "הו",
+    "frequency": 11.49,
+    "hebrew": "הו",
+    "transcription": "хо",
+    "translation": "о"
+  },
+  {
+    "id": "191",
+    "type": "verb",
+    "gender": "feminine",
+    "root": "תהיה",
+    "frequency": 11.49,
+    "hebrew": "תהיה",
+    "transcription": "тихье",
+    "translation": "будь"
+  },
+  {
+    "id": "192",
+    "type": "adverb",
+    "gender": "common",
+    "root": "הכי",
+    "frequency": 11.47,
+    "hebrew": "הכי",
+    "transcription": "хаки",
+    "translation": "самый"
+  },
+  {
+    "id": "193",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "הדבר",
+    "frequency": 11.47,
+    "hebrew": "הדבר",
+    "transcription": "хадавар",
+    "translation": "вещь"
+  },
+  {
+    "id": "194",
+    "type": "verb",
+    "gender": "masculine",
+    "root": "תן",
+    "frequency": 11.46,
+    "hebrew": "תן",
+    "transcription": "тэн",
+    "translation": "дай"
+  },
+  {
+    "id": "195",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "י",
+    "frequency": 11.46,
+    "hebrew": "י",
+    "transcription": "йуд",
+    "translation": "йуд"
+  },
+  {
+    "id": "196",
+    "type": "preposition",
+    "gender": "common",
+    "root": "ב",
+    "frequency": 11.46,
+    "hebrew": "ב",
+    "transcription": "бэ",
+    "translation": "в"
+  },
+  {
+    "id": "197",
+    "type": "verb",
+    "gender": "common",
+    "root": "לדעת",
+    "frequency": 11.45,
+    "hebrew": "לדעת",
+    "transcription": "ладаат",
+    "translation": "знать"
+  },
+  {
+    "id": "198",
+    "type": "pronoun",
+    "gender": "masculine",
+    "root": "כלום",
+    "frequency": 11.45,
+    "hebrew": "כלום",
+    "transcription": "клум",
+    "translation": "ничего"
+  },
+  {
+    "id": "199",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "מקום",
+    "frequency": 11.44,
+    "hebrew": "מקום",
+    "transcription": "маком",
+    "translation": "место"
+  },
+  {
+    "id": "200",
+    "type": "adjective",
+    "gender": "masculine",
+    "root": "כזה",
+    "frequency": 11.43,
+    "hebrew": "כזה",
+    "transcription": "казэ",
+    "translation": "такой"
+  }
+] 

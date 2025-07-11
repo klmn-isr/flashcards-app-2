@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "flashcards-app-2",
+    "prod": "flashcards-app-2"
+  },
+  "targets": {},
+  "etags": {}
+}
