@@ -20,11 +20,31 @@ const FlashcardInitializer: React.FC = () => {
       const allFlashcards = await loadAllFlashcards();
       setMessage(`Found ${allFlashcards.length} flashcards. Starting initialization...`);
       
-      await initializeRemoteFlashcards();
+      await initializeRemoteFlashcards(false);
       setMessage(`Successfully initialized ${allFlashcards.length} flashcards in Firestore!`);
       await loadStats();
     } catch (error) {
       setMessage(`Error initializing flashcards: ${error}`);
+    } finally {
+      setIsInitializing(false);
+    }
+  };
+
+  const handleForceInitialize = async () => {
+    setIsInitializing(true);
+    setMessage('Force re-initializing all flashcards...');
+    
+    try {
+      // First, load all flashcards to get the count
+      const { loadAllFlashcards } = await import('../data/flashcardLoader');
+      const allFlashcards = await loadAllFlashcards();
+      setMessage(`Found ${allFlashcards.length} flashcards. Force re-initializing...`);
+      
+      await initializeRemoteFlashcards(true);
+      setMessage(`Successfully re-initialized ${allFlashcards.length} flashcards in Firestore!`);
+      await loadStats();
+    } catch (error) {
+      setMessage(`Error re-initializing flashcards: ${error}`);
     } finally {
       setIsInitializing(false);
     }
@@ -47,7 +67,7 @@ const FlashcardInitializer: React.FC = () => {
     <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
       <h2 className="text-2xl font-bold mb-4 text-gray-800">Flashcard Database</h2>
       
-      <div className="mb-6">
+      <div className="mb-6 space-y-2">
         <button
           onClick={handleInitialize}
           disabled={isInitializing}
@@ -58,6 +78,18 @@ const FlashcardInitializer: React.FC = () => {
           }`}
         >
           {isInitializing ? 'Initializing...' : 'Initialize Remote Flashcards'}
+        </button>
+        
+        <button
+          onClick={handleForceInitialize}
+          disabled={isInitializing}
+          className={`px-4 py-2 rounded-md text-white font-medium ${
+            isInitializing
+              ? 'bg-gray-400 cursor-not-allowed'
+              : 'bg-red-600 hover:bg-red-700'
+          }`}
+        >
+          {isInitializing ? 'Re-initializing...' : 'Force Re-initialize (Overwrite)'}
         </button>
         
         {message && (

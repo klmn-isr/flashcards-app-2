@@ -10,14 +10,16 @@ export interface RemoteFlashcard extends Flashcard {
 }
 
 // Initialize remote flashcards in Firestore (run once)
-export async function initializeRemoteFlashcards(): Promise<void> {
+export async function initializeRemoteFlashcards(forceReinitialize: boolean = false): Promise<void> {
   const flashcardsRef = collection(db, 'remoteFlashcards');
   
-  // Check if already initialized
-  const existingDocs = await getDocs(query(flashcardsRef, limit(1)));
-  if (!existingDocs.empty) {
-    console.log('Remote flashcards already initialized');
-    return;
+  // Check if already initialized (unless forcing re-initialization)
+  if (!forceReinitialize) {
+    const existingDocs = await getDocs(query(flashcardsRef, limit(1)));
+    if (!existingDocs.empty) {
+      console.log('Remote flashcards already initialized');
+      return;
+    }
   }
 
   // Import all flashcards using the loader
