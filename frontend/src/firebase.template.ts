@@ -3,12 +3,13 @@ import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
 // Your Firebase configuration
+// Copy this file to firebase.ts and replace with your actual Firebase project config
 const firebaseConfig = {
-  apiKey: "AIzaSyDF0A-2vwdV3KVvZFwj6yZtlAizrn5ryw4",
-  authDomain: "flashcards-app-2.firebaseapp.com",
-  projectId: "flashcards-app-2",
-  storageBucket: "flashcards-app-2.firebasestorage.app",
-  appId: "1:800511631201:web:c3318015dc960b1dacef20"
+  apiKey: "your-api-key-here",
+  authDomain: "your-project-id.firebaseapp.com",
+  projectId: "your-project-id",
+  storageBucket: "your-project-id.firebasestorage.app",
+  appId: "your-app-id-here"
 };
 
 // Initialize Firebase
