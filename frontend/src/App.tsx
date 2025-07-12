@@ -6,6 +6,8 @@ import type { FlashcardQuestion } from './types/flashcard'
 import { useAuth } from './contexts/AuthContext'
 import Login from './components/Login'
 import Register from './components/Register'
+import FlashcardInitializer from './components/FlashcardInitializer'
+import FlashcardBrowser from './components/FlashcardBrowser'
 import './App.css'
 
 function App() {
@@ -15,6 +17,7 @@ function App() {
   const [allFlashcards, setAllFlashcards] = useState<any[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [showRegister, setShowRegister] = useState(false)
+  const [currentView, setCurrentView] = useState<'study' | 'browser' | 'initializer'>('study')
 
   useEffect(() => {
     // Load all flashcards asynchronously
@@ -101,15 +104,45 @@ function App() {
         <div className="stats">
           <span>Card: {totalQuestions}</span>
           <span>Total words: {allFlashcards.length}</span>
-          <button onClick={logout} className="logout-btn">Logout</button>
+          <div className="nav-buttons">
+            <button 
+              onClick={() => setCurrentView('study')}
+              className={currentView === 'study' ? 'active' : ''}
+            >
+              Study
+            </button>
+            <button 
+              onClick={() => setCurrentView('browser')}
+              className={currentView === 'browser' ? 'active' : ''}
+            >
+              Browse
+            </button>
+            <button 
+              onClick={() => setCurrentView('initializer')}
+              className={currentView === 'initializer' ? 'active' : ''}
+            >
+              Database
+            </button>
+            <button onClick={logout} className="logout-btn">Logout</button>
+          </div>
         </div>
       </header>
       
       <main className="app-main">
-        <Flashcard 
-          question={currentQuestion} 
-          onNext={handleNext}
-        />
+        {currentView === 'study' && (
+          <Flashcard 
+            question={currentQuestion} 
+            onNext={handleNext}
+          />
+        )}
+        
+        {currentView === 'browser' && (
+          <FlashcardBrowser />
+        )}
+        
+        {currentView === 'initializer' && (
+          <FlashcardInitializer />
+        )}
       </main>
       
       <footer className="app-footer">

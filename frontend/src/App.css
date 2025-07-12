@@ -230,6 +230,35 @@
   color: #0056b3;
 }
 
+.nav-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.nav-buttons button {
+  background-color: #6b7280;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.nav-buttons button:hover {
+  background-color: #4b5563;
+}
+
+.nav-buttons button.active {
+  background-color: #3b82f6;
+}
+
+.nav-buttons button.active:hover {
+  background-color: #2563eb;
+}
+
 .logout-btn {
   background: #dc3545;
   color: white;
