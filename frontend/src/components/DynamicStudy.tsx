@@ -1,105 +1,116 @@
 import React, { useState, useEffect } from 'react';
-import { getFlashcardsForStudy } from '../services/unifiedFlashcardService';
+import { getRandomUnifiedFlashcard, getRandomUnifiedFlashcardByMaxFrequencyOnly } from '../services/unifiedFlashcardService';
 import type { UnifiedFlashcard } from '../services/unifiedFlashcardService';
 import type { FlashcardQuestion } from '../types/flashcard';
 import { generateRandomQuestion } from '../utils/flashcardUtils';
+import { FrequencySelector } from './FrequencySelector';
 
 const DynamicStudy: React.FC = () => {
-  const [flashcards, setFlashcards] = useState<UnifiedFlashcard[]>([]);
+  const [currentFlashcard, setCurrentFlashcard] = useState<UnifiedFlashcard | null>(null);
   const [currentQuestion, setCurrentQuestion] = useState<FlashcardQuestion | null>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [totalQuestions, setTotalQuestions] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [studyStats, setStudyStats] = useState({
-    total: 0,
-    userFlashcards: 0,
-    remoteFlashcards: 0
-  });
+  const [loadingNext, setLoadingNext] = useState(false);
+  const [customFrequency, setCustomFrequency] = useState<number | null>(null);
 
   useEffect(() => {
-    loadStudyFlashcards();
-  }, []);
+    loadRandomFlashcard();
+  }, []); // Only load on initial mount, not on customFrequency change
 
-  const loadStudyFlashcards = async () => {
+  const loadRandomFlashcard = async () => {
     try {
       setLoading(true);
-      const studyFlashcards = await getFlashcardsForStudy(900, true, true);
-      setFlashcards(studyFlashcards);
+      let flashcard: UnifiedFlashcard | null = null;
       
-      const stats = {
-        total: studyFlashcards.length,
-        userFlashcards: studyFlashcards.filter(f => f.type === 'user').length,
-        remoteFlashcards: studyFlashcards.filter(f => f.type === 'remote').length
-      };
-      setStudyStats(stats);
+      if (customFrequency !== null) {
+        // Use custom frequency (≤)
+        flashcard = await getRandomUnifiedFlashcardByMaxFrequencyOnly(customFrequency);
+      } else {
+        // Use all frequencies
+        flashcard = await getRandomUnifiedFlashcard();
+      }
       
-      if (studyFlashcards.length > 0) {
-        generateNewQuestion(studyFlashcards);
+      if (flashcard) {
+        setCurrentFlashcard(flashcard);
+        generateQuestionFromFlashcard(flashcard);
+        setTotalQuestions(prev => prev + 1);
       }
     } catch (error) {
-      console.error('Error loading study flashcards:', error);
+      console.error('Error loading random flashcard:', error);
     } finally {
       setLoading(false);
     }
   };
 
-  const generateNewQuestion = (flashcardList: UnifiedFlashcard[]) => {
-    if (flashcardList.length === 0) return;
-    
-    const randomFlashcard = flashcardList[Math.floor(Math.random() * flashcardList.length)];
-    
-    // Handle both user and remote flashcards
-    if (randomFlashcard.type === 'remote') {
-      const remoteFlashcard = randomFlashcard.flashcard as any;
+  const generateQuestionFromFlashcard = (flashcard: UnifiedFlashcard) => {
+    if (flashcard.type === 'remote') {
+      const remoteFlashcard = flashcard.flashcard as any;
       const question = generateRandomQuestion(remoteFlashcard);
       setCurrentQuestion(question);
     } else {
       // For user flashcards, create a simple question
-      const userFlashcard = randomFlashcard.flashcard as any;
+      const userFlashcard = flashcard.flashcard as any;
       const question: FlashcardQuestion = {
         questionType: 'hebrew',
         question: userFlashcard.front,
         answer1: userFlashcard.back,
         answer2: 'Incorrect answer',
-        frequency: 1
+        frequency: 1,
+        hebrew: userFlashcard.hebrew,
       };
       setCurrentQuestion(question);
     }
-    
-    setTotalQuestions(prev => prev + 1);
   };
 
+  const handleNext = async () => {
+    setLoadingNext(true);
+    try {
+      let flashcard: UnifiedFlashcard | null = null;
+      
+      if (customFrequency !== null) {
+        // Use custom frequency (≤)
+        flashcard = await getRandomUnifiedFlashcardByMaxFrequencyOnly(customFrequency);
+      } else {
+        // Use all frequencies
+        flashcard = await getRandomUnifiedFlashcard();
+      }
+      
+      if (flashcard) {
+        setCurrentFlashcard(flashcard);
+        generateQuestionFromFlashcard(flashcard);
+        setTotalQuestions(prev => prev + 1);
+      }
+    } catch (error) {
+      console.error('Error loading next flashcard:', error);
+    } finally {
+      setLoadingNext(false);
+    }
+  };
 
+  const handleCustomFrequencyChange = (frequency: number | null) => {
+    setCustomFrequency(frequency);
+    // Don't reset question counter or reload flashcard on frequency change
+  };
 
   if (loading) {
     return (
       <div className="max-w-2xl mx-auto p-6">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading flashcards from Firebase...</p>
+          <p className="text-gray-600">Loading random flashcard from Firebase...</p>
         </div>
       </div>
     );
   }
 
-  if (flashcards.length === 0) {
+  if (!currentFlashcard || !currentQuestion) {
     return (
       <div className="max-w-2xl mx-auto p-6">
         <div className="text-center">
           <h2 className="text-2xl font-bold mb-4 text-gray-800">No Flashcards Available</h2>
           <p className="text-gray-600 mb-4">
-            No flashcards found. Please initialize the database or add some flashcards to your deck.
+            No flashcards found for the selected frequency range. Please try a different range or initialize the database.
           </p>
-        </div>
-      </div>
-    );
-  }
-
-  if (!currentQuestion) {
-    return (
-      <div className="max-w-2xl mx-auto p-6">
-        <div className="text-center">
-          <p className="text-gray-600">Generating question...</p>
         </div>
       </div>
     );
@@ -107,30 +118,18 @@ const DynamicStudy: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-6">
-      {/* Study Stats */}
-      <div className="mb-6 p-4 bg-blue-50 rounded-lg">
-        <h2 className="text-lg font-semibold mb-2">Study Session</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-          <div>
-            <span className="font-medium">Total Flashcards:</span> {studyStats.total}
-          </div>
-          <div>
-            <span className="font-medium">Your Deck:</span> {studyStats.userFlashcards}
-          </div>
-          <div>
-            <span className="font-medium">Remote Cards:</span> {studyStats.remoteFlashcards}
-          </div>
-        </div>
-        <div className="mt-2">
-          <span className="font-medium">Questions Answered:</span> {totalQuestions}
-        </div>
-      </div>
+      {/* Frequency Selector */}
+      <FrequencySelector 
+        customFrequency={customFrequency}
+        onCustomFrequencyChange={handleCustomFrequencyChange}
+      />
 
       {/* Flashcard Component */}
       <div className="mb-6">
         <Flashcard 
           question={currentQuestion} 
-          onNext={() => {}}
+          onNext={handleNext}
+          loadingNext={loadingNext}
         />
       </div>
     </div>

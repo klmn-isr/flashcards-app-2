@@ -2,7 +2,10 @@ import { collection, addDoc, updateDoc, deleteDoc, doc, query, where, getDocs, o
 import { db, auth } from '../firebase';
 import type { Flashcard } from '../types/flashcard';
 import type { RemoteFlashcard } from './remoteFlashcardService';
-import { getRandomFlashcards, getFlashcardById as getRemoteFlashcardById } from './remoteFlashcardService';
+import { getRandomFlashcards, getRandomFlashcard, getFlashcardById as getRemoteFlashcardById } from './remoteFlashcardService';
+
+// Import frequency ranges from remote service
+import { FREQUENCY_RANGES, type FrequencyRange } from './remoteFlashcardService';
 
 export interface UserFlashcard {
   id?: string;
@@ -86,10 +89,12 @@ export async function getUserFlashcards(): Promise<UserFlashcard[]> {
   );
 
   const querySnapshot = await getDocs(q);
-  return querySnapshot.docs.map(doc => ({
+  const flashcards = querySnapshot.docs.map(doc => ({
     id: doc.id,
     ...doc.data()
   })) as UserFlashcard[];
+  
+  return flashcards;
 }
 
 // Get unified flashcards (user + remote)
@@ -153,6 +158,7 @@ export async function updateUserFlashcardProgress(
   }
 
   await updateDoc(doc(db, 'userFlashcards', flashcardId), updateData);
+  
 }
 
 // Create study session
@@ -193,6 +199,7 @@ export async function deleteUserFlashcard(flashcardId: string): Promise<void> {
   if (!user) throw new Error('User not authenticated');
 
   await deleteDoc(doc(db, 'userFlashcards', flashcardId));
+  
 }
 
 // Get flashcards for study session
@@ -273,4 +280,92 @@ export function subscribeToUserFlashcards(callback: (flashcards: UserFlashcard[]
     })) as UserFlashcard[];
     callback(flashcards);
   });
+} 
+
+// Get a single random flashcard for study
+export async function getRandomUnifiedFlashcard(filters?: {
+  type?: Flashcard['type'];
+  gender?: Flashcard['gender'];
+  difficulty?: 'easy' | 'medium' | 'hard';
+  minFrequency?: number;
+  maxFrequency?: number;
+}): Promise<UnifiedFlashcard | null> {
+  const user = auth.currentUser;
+  if (!user) throw new Error('User not authenticated');
+
+  // Get user flashcards
+  const userFlashcards = await getUserFlashcards();
+  const filteredUser = userFlashcards.filter(flashcard => {
+    if (filters?.difficulty && flashcard.difficulty !== filters.difficulty) {
+      return false;
+    }
+    return true;
+  });
+
+  // Get a random remote flashcard
+  const remoteFilters = {
+    type: filters?.type,
+    gender: filters?.gender
+  };
+  
+  const remoteFlashcard = await getRandomFlashcard(remoteFilters);
+  
+  // Combine user and remote flashcards
+  const allFlashcards: UnifiedFlashcard[] = [];
+  
+  // Add user flashcards
+  filteredUser.forEach(flashcard => {
+    allFlashcards.push({
+      id: flashcard.id!,
+      type: 'user',
+      flashcard,
+      progress: {
+        reviewCount: flashcard.reviewCount,
+        correctCount: flashcard.correctCount,
+        difficulty: flashcard.difficulty,
+        lastReviewed: flashcard.lastReviewed
+      }
+    });
+  });
+  
+  // Add remote flashcard if found
+  if (remoteFlashcard) {
+    allFlashcards.push({
+      id: remoteFlashcard.id,
+      type: 'remote',
+      flashcard: remoteFlashcard
+    });
+  }
+  
+  if (allFlashcards.length === 0) {
+    return null;
+  }
+  
+  // Return a single random flashcard
+  const randomIndex = Math.floor(Math.random() * allFlashcards.length);
+  return allFlashcards[randomIndex];
+} 
+
+// Helper functions for frequency-based unified flashcard requests
+export async function getRandomUnifiedFlashcardByMinFrequency(minFrequency: number): Promise<UnifiedFlashcard | null> {
+  return getRandomUnifiedFlashcard({ minFrequency });
+}
+
+export async function getRandomUnifiedFlashcardByMaxFrequency(maxFrequency: number): Promise<UnifiedFlashcard | null> {
+  return getRandomUnifiedFlashcard({ maxFrequency });
+}
+
+export async function getRandomUnifiedFlashcardByFrequencyRange(minFrequency: number, maxFrequency: number): Promise<UnifiedFlashcard | null> {
+  return getRandomUnifiedFlashcard({ minFrequency, maxFrequency });
+}
+
+// Helper function for specific frequency ranges
+export async function getRandomUnifiedFlashcardByRange(range: FrequencyRange): Promise<UnifiedFlashcard | null> {
+  const { min, max } = FREQUENCY_RANGES[range];
+  return getRandomUnifiedFlashcardByFrequencyRange(min, max);
+}
+
+// Helper function for custom frequency (≤)
+export async function getRandomUnifiedFlashcardByMaxFrequencyOnly(maxFrequency: number): Promise<UnifiedFlashcard | null> {
+  return getRandomUnifiedFlashcard({ maxFrequency });
 } 

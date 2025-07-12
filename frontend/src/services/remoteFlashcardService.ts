@@ -71,10 +71,9 @@ export async function getFlashcardsByType(type: Flashcard['type']): Promise<Remo
 export async function getFlashcardsByFrequency(minFrequency: number, maxFrequency: number): Promise<RemoteFlashcard[]> {
   const q = query(
     collection(db, 'remoteFlashcards'),
-    where('frequency', '>=', minFrequency),
-    where('frequency', '<=', maxFrequency),
     where('isActive', '==', true),
-    orderBy('frequency', 'desc')
+    where('frequency', '>=', minFrequency),
+    where('frequency', '<=', maxFrequency)
   );
   
   const querySnapshot = await getDocs(q);
@@ -123,26 +122,20 @@ export async function searchFlashcards(searchTerm: string): Promise<RemoteFlashc
   );
 }
 
-// Get random flashcards for study
+// Get random flashcards for study (optimized)
 export async function getRandomFlashcards(count: number, filters?: {
   type?: Flashcard['type'];
   gender?: Flashcard['gender'];
   minFrequency?: number;
   maxFrequency?: number;
 }): Promise<RemoteFlashcard[]> {
+  // Build query with frequency filters
   let q = query(
     collection(db, 'remoteFlashcards'),
     where('isActive', '==', true)
   );
   
-  if (filters?.type) {
-    q = query(q, where('type', '==', filters.type));
-  }
-  
-  if (filters?.gender) {
-    q = query(q, where('gender', '==', filters.gender));
-  }
-  
+  // Add frequency filters if provided
   if (filters?.minFrequency !== undefined) {
     q = query(q, where('frequency', '>=', filters.minFrequency));
   }
@@ -151,6 +144,16 @@ export async function getRandomFlashcards(count: number, filters?: {
     q = query(q, where('frequency', '<=', filters.maxFrequency));
   }
   
+  // Add other filters
+  if (filters?.type) {
+    q = query(q, where('type', '==', filters.type));
+  }
+  
+  if (filters?.gender) {
+    q = query(q, where('gender', '==', filters.gender));
+  }
+  
+  // Get all flashcards matching the criteria
   const querySnapshot = await getDocs(q);
   const allFlashcards = querySnapshot.docs.map(doc => ({
     id: doc.id,
@@ -210,4 +213,123 @@ export async function getFlashcardStats(): Promise<{
     byType,
     byGender
   };
+} 
+
+// Get a single random flashcard efficiently
+export async function getRandomFlashcard(filters?: {
+  type?: Flashcard['type'];
+  gender?: Flashcard['gender'];
+  minFrequency?: number;
+  maxFrequency?: number;
+}): Promise<RemoteFlashcard | null> {
+  // Build query with frequency filters
+  let q = query(
+    collection(db, 'remoteFlashcards'),
+    where('isActive', '==', true)
+  );
+  
+  // Add frequency filters if provided
+  if (filters?.minFrequency !== undefined) {
+    q = query(q, where('frequency', '>=', filters.minFrequency));
+  }
+  
+  if (filters?.maxFrequency !== undefined) {
+    q = query(q, where('frequency', '<=', filters.maxFrequency));
+  }
+  
+  // Add other filters
+  if (filters?.type) {
+    q = query(q, where('type', '==', filters.type));
+  }
+  
+  if (filters?.gender) {
+    q = query(q, where('gender', '==', filters.gender));
+  }
+  
+  // Get all flashcards matching the criteria
+  const querySnapshot = await getDocs(q);
+  const flashcards = querySnapshot.docs.map(doc => ({
+    id: doc.id,
+    ...doc.data()
+  })) as RemoteFlashcard[];
+  
+  if (flashcards.length === 0) {
+    return null;
+  }
+  
+  // Return a random flashcard from the matching results
+  const randomIndex = Math.floor(Math.random() * flashcards.length);
+  return flashcards[randomIndex];
+} 
+
+// Helper functions for frequency-based requests
+export async function getRandomFlashcardByMinFrequency(minFrequency: number): Promise<RemoteFlashcard | null> {
+  return getRandomFlashcard({ minFrequency });
+}
+
+export async function getRandomFlashcardByMaxFrequency(maxFrequency: number): Promise<RemoteFlashcard | null> {
+  return getRandomFlashcard({ maxFrequency });
+}
+
+export async function getRandomFlashcardByFrequencyRange(minFrequency: number, maxFrequency: number): Promise<RemoteFlashcard | null> {
+  return getRandomFlashcard({ minFrequency, maxFrequency });
+}
+
+// Get flashcards by minimum frequency (equals or higher)
+export async function getFlashcardsByMinFrequency(minFrequency: number): Promise<RemoteFlashcard[]> {
+  const q = query(
+    collection(db, 'remoteFlashcards'),
+    where('isActive', '==', true),
+    where('frequency', '>=', minFrequency),
+    orderBy('frequency', 'desc')
+  );
+  
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs.map(doc => ({
+    id: doc.id,
+    ...doc.data()
+  })) as RemoteFlashcard[];
+}
+
+// Get flashcards by maximum frequency (equals or lower)
+export async function getFlashcardsByMaxFrequency(maxFrequency: number): Promise<RemoteFlashcard[]> {
+  const q = query(
+    collection(db, 'remoteFlashcards'),
+    where('isActive', '==', true),
+    where('frequency', '<=', maxFrequency),
+    orderBy('frequency', 'desc')
+  );
+  
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs.map(doc => ({
+    id: doc.id,
+    ...doc.data()
+  })) as RemoteFlashcard[];
+} 
+
+// Frequency range definitions - updated to match actual database distribution
+export const FREQUENCY_RANGES = {
+  '0-11': { min: 0, max: 11, label: 'Common (0-11)' },
+  '11-12': { min: 11, max: 12, label: 'Medium-High (11-12)' },
+  '12-13': { min: 12, max: 13, label: 'High (12-13)' },
+  '13-15': { min: 13, max: 15, label: 'Very High (13-15)' },
+  '15+': { min: 15, max: 999, label: 'Rare (15+)' }
+} as const;
+
+export type FrequencyRange = keyof typeof FREQUENCY_RANGES;
+
+// Helper function for custom frequency (≤)
+export async function getRandomFlashcardByMaxFrequencyOnly(maxFrequency: number): Promise<RemoteFlashcard | null> {
+  return getRandomFlashcard({ maxFrequency });
+}
+
+// Helper functions for specific frequency ranges
+export async function getRandomFlashcardByRange(range: FrequencyRange): Promise<RemoteFlashcard | null> {
+  const { min, max } = FREQUENCY_RANGES[range];
+  return getRandomFlashcardByFrequencyRange(min, max);
+}
+
+export async function getFlashcardsByRange(range: FrequencyRange): Promise<RemoteFlashcard[]> {
+  const { min, max } = FREQUENCY_RANGES[range];
+  return getFlashcardsByFrequency(min, max);
 } 

@@ -5,9 +5,10 @@ import './Flashcard.css';
 interface FlashcardProps {
   question: FlashcardQuestion;
   onNext: () => void;
+  loadingNext?: boolean;
 }
 
-export function Flashcard({ question, onNext }: FlashcardProps) {
+export function Flashcard({ question, onNext, loadingNext = false }: FlashcardProps) {
   const [showAnswer, setShowAnswer] = useState(false);
   const [selectedAnswers, setSelectedAnswers] = useState<Set<'answer1' | 'answer2'>>(new Set());
 
@@ -36,11 +37,11 @@ export function Flashcard({ question, onNext }: FlashcardProps) {
   return (
     <div className="flashcard">
       <div className="flashcard-header">
-        <span className="question-type">Частота: {question.frequency.toFixed(2)}</span>
+        <span className="question-type">Частота: {loadingNext ? '...' : question.frequency.toFixed(2)}</span>
       </div>
       
       <div className="flashcard-question">
-        <h2>{question.question}</h2>
+        <h2>{loadingNext ? '...' : question.question}</h2>
       </div>
 
       {!showAnswer ? (
@@ -48,6 +49,7 @@ export function Flashcard({ question, onNext }: FlashcardProps) {
           <button 
             className="show-answer-btn"
             onClick={handleShowAnswer}
+            disabled={loadingNext}
           >
             Показать ответ
           </button>
@@ -58,14 +60,16 @@ export function Flashcard({ question, onNext }: FlashcardProps) {
             <button
               className={`answer-btn ${selectedAnswers.has('answer1') ? 'selected' : ''}`}
               onClick={() => handleAnswerClick('answer1')}
+              disabled={loadingNext}
             >
-              {question.answer1}
+              {loadingNext ? '...' : question.answer1}
             </button>
             <button
               className={`answer-btn ${selectedAnswers.has('answer2') ? 'selected' : ''}`}
               onClick={() => handleAnswerClick('answer2')}
+              disabled={loadingNext}
             >
-              {question.answer2}
+              {loadingNext ? '...' : question.answer2}
             </button>
           </div>
           
@@ -73,8 +77,9 @@ export function Flashcard({ question, onNext }: FlashcardProps) {
             <button 
               className="next-btn"
               onClick={handleNext}
+              disabled={loadingNext}
             >
-              Следующая карточка
+              {loadingNext ? '...' : 'Следующая карточка'}
             </button>
           </div>
         </div>

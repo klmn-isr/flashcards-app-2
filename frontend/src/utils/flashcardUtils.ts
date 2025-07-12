@@ -31,7 +31,8 @@ export function generateRandomQuestion(flashcard: Flashcard): FlashcardQuestion 
     question,
     answer1,
     answer2,
-    frequency: flashcard.frequency
+    frequency: flashcard.frequency,
+    hebrew: flashcard.hebrew
   };
 }
 
