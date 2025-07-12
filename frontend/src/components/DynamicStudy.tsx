@@ -23,7 +23,7 @@ const DynamicStudy: React.FC = () => {
   const loadStudyFlashcards = async () => {
     try {
       setLoading(true);
-      const studyFlashcards = await getFlashcardsForStudy(50, true, true);
+      const studyFlashcards = await getFlashcardsForStudy(900, true, true);
       setFlashcards(studyFlashcards);
       
       const stats = {
@@ -69,13 +69,7 @@ const DynamicStudy: React.FC = () => {
     setTotalQuestions(prev => prev + 1);
   };
 
-  const handleNext = () => {
-    generateNewQuestion(flashcards);
-  };
 
-  const handleRefresh = () => {
-    loadStudyFlashcards();
-  };
 
   if (loading) {
     return (
@@ -96,12 +90,6 @@ const DynamicStudy: React.FC = () => {
           <p className="text-gray-600 mb-4">
             No flashcards found. Please initialize the database or add some flashcards to your deck.
           </p>
-          <button
-            onClick={handleRefresh}
-            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-          >
-            Refresh
-          </button>
         </div>
       </div>
     );
@@ -142,24 +130,8 @@ const DynamicStudy: React.FC = () => {
       <div className="mb-6">
         <Flashcard 
           question={currentQuestion} 
-          onNext={handleNext}
+          onNext={() => {}}
         />
-      </div>
-
-      {/* Controls */}
-      <div className="flex justify-center space-x-4">
-        <button
-          onClick={handleNext}
-          className="px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
-        >
-          Next Question
-        </button>
-        <button
-          onClick={handleRefresh}
-          className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-        >
-          Refresh Deck
-        </button>
       </div>
     </div>
   );

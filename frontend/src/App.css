@@ -80,6 +80,7 @@
 }
 
 .app-main {
+  overflow-y: auto;
   flex: 1;
   display: flex;
   align-items: center;
