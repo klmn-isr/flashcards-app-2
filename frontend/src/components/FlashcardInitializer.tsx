@@ -12,11 +12,16 @@ const FlashcardInitializer: React.FC = () => {
 
   const handleInitialize = async () => {
     setIsInitializing(true);
-    setMessage('Initializing remote flashcards...');
+    setMessage('Loading all flashcards...');
     
     try {
+      // First, load all flashcards to get the count
+      const { loadAllFlashcards } = await import('../data/flashcardLoader');
+      const allFlashcards = await loadAllFlashcards();
+      setMessage(`Found ${allFlashcards.length} flashcards. Starting initialization...`);
+      
       await initializeRemoteFlashcards();
-      setMessage('Remote flashcards initialized successfully!');
+      setMessage(`Successfully initialized ${allFlashcards.length} flashcards in Firestore!`);
       await loadStats();
     } catch (error) {
       setMessage(`Error initializing flashcards: ${error}`);

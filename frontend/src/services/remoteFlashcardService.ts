@@ -20,13 +20,14 @@ export async function initializeRemoteFlashcards(): Promise<void> {
     return;
   }
 
-  // Import static data
-  const { flashcards } = await import('../data/flashcards');
+  // Import all flashcards using the loader
+  const { loadAllFlashcards } = await import('../data/flashcardLoader');
+  const allFlashcards = await loadAllFlashcards();
   
   // Add flashcards in batches using batch writes
   const batchSize = 500;
-  for (let i = 0; i < flashcards.length; i += batchSize) {
-    const flashcardBatch = flashcards.slice(i, i + batchSize);
+  for (let i = 0; i < allFlashcards.length; i += batchSize) {
+    const flashcardBatch = allFlashcards.slice(i, i + batchSize);
     const writeBatchInstance = writeBatch(db);
     
     flashcardBatch.forEach((flashcard) => {
@@ -42,7 +43,7 @@ export async function initializeRemoteFlashcards(): Promise<void> {
     });
     
     await writeBatchInstance.commit();
-    console.log(`Added batch ${Math.floor(i / batchSize) + 1} of ${Math.ceil(flashcards.length / batchSize)}`);
+    console.log(`Added batch ${Math.floor(i / batchSize) + 1} of ${Math.ceil(allFlashcards.length / batchSize)}`);
   }
   
   console.log('Remote flashcards initialized successfully');
