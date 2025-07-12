@@ -3,13 +3,18 @@ import { Flashcard } from './components/Flashcard'
 import { loadAllFlashcards } from './data/flashcardLoader'
 import { generateRandomQuestion } from './utils/flashcardUtils'
 import type { FlashcardQuestion } from './types/flashcard'
+import { useAuth } from './contexts/AuthContext'
+import Login from './components/Login'
+import Register from './components/Register'
 import './App.css'
 
 function App() {
+  const { currentUser, logout } = useAuth()
   const [currentQuestion, setCurrentQuestion] = useState<FlashcardQuestion | null>(null)
   const [totalQuestions, setTotalQuestions] = useState(0)
   const [allFlashcards, setAllFlashcards] = useState<any[]>([])
   const [isLoading, setIsLoading] = useState(true)
+  const [showRegister, setShowRegister] = useState(false)
 
   useEffect(() => {
     // Load all flashcards asynchronously
@@ -46,21 +51,57 @@ function App() {
     generateNewQuestion();
   }
 
+  // Show authentication if user is not logged in
+  if (!currentUser) {
+    return (
+      <div className="app">
+        <header className="app-header">
+          <h1>Hebrew Flashcards</h1>
+        </header>
+        
+        <main className="app-main">
+          {showRegister ? (
+            <div>
+              <Register />
+              <button 
+                className="auth-toggle"
+                onClick={() => setShowRegister(false)}
+              >
+                Already have an account? Sign In
+              </button>
+            </div>
+          ) : (
+            <div>
+              <Login />
+              <button 
+                className="auth-toggle"
+                onClick={() => setShowRegister(true)}
+              >
+                Need an account? Sign Up
+              </button>
+            </div>
+          )}
+        </main>
+      </div>
+    )
+  }
+
   if (isLoading) {
-    return <div className="loading">Загрузка карточек...</div>;
+    return <div className="loading">Loading flashcards...</div>;
   }
 
   if (!currentQuestion) {
-    return <div className="loading">Загрузка...</div>
+    return <div className="loading">Loading...</div>
   }
 
   return (
     <div className="app">
       <header className="app-header">
-        <h1>Иврит Карточки</h1>
+        <h1>Hebrew Flashcards</h1>
         <div className="stats">
-          <span>Карточка: {totalQuestions}</span>
-          <span>Всего слов: {allFlashcards.length}</span>
+          <span>Card: {totalQuestions}</span>
+          <span>Total words: {allFlashcards.length}</span>
+          <button onClick={logout} className="logout-btn">Logout</button>
         </div>
       </header>
       
@@ -72,7 +113,7 @@ function App() {
       </main>
       
       <footer className="app-footer">
-        <p>Изучайте иврит с помощью карточек!</p>
+        <p>Study Hebrew with flashcards!</p>
       </footer>
     </div>
   )
