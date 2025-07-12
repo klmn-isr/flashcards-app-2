@@ -1,4 +1,4 @@
-import { collection, addDoc, getDocs, query, where, orderBy, limit, doc, getDoc, setDoc } from 'firebase/firestore';
+import { collection, addDoc, getDocs, query, where, orderBy, limit, doc, getDoc, setDoc, writeBatch } from 'firebase/firestore';
 import { db } from '../firebase';
 import type { Flashcard } from '../types/flashcard';
 
@@ -23,12 +23,13 @@ export async function initializeRemoteFlashcards(): Promise<void> {
   // Import static data
   const { flashcards } = await import('../data/flashcards');
   
-  // Add flashcards in batches
+  // Add flashcards in batches using batch writes
   const batchSize = 500;
   for (let i = 0; i < flashcards.length; i += batchSize) {
-    const batch = flashcards.slice(i, i + batchSize);
+    const flashcardBatch = flashcards.slice(i, i + batchSize);
+    const writeBatchInstance = writeBatch(db);
     
-    const promises = batch.map(async (flashcard) => {
+    flashcardBatch.forEach((flashcard) => {
       const remoteFlashcard: RemoteFlashcard = {
         ...flashcard,
         isActive: true,
@@ -36,11 +37,12 @@ export async function initializeRemoteFlashcards(): Promise<void> {
         tags: [flashcard.type, flashcard.gender]
       };
       
-      return addDoc(flashcardsRef, remoteFlashcard);
+      const docRef = doc(flashcardsRef);
+      writeBatchInstance.set(docRef, remoteFlashcard);
     });
     
-    await Promise.all(promises);
-    console.log(`Added batch ${Math.floor(i / batchSize) + 1}`);
+    await writeBatchInstance.commit();
+    console.log(`Added batch ${Math.floor(i / batchSize) + 1} of ${Math.ceil(flashcards.length / batchSize)}`);
   }
   
   console.log('Remote flashcards initialized successfully');
