@@ -20,6 +20,7 @@ const DynamicStudy: React.FC = () => {
   const loadRandomFlashcard = async () => {
     try {
       setLoading(true);
+      
       let flashcard: UnifiedFlashcard | null = null;
       
       if (customFrequency !== null) {
@@ -43,23 +44,10 @@ const DynamicStudy: React.FC = () => {
   };
 
   const generateQuestionFromFlashcard = (flashcard: UnifiedFlashcard) => {
-    if (flashcard.type === 'remote') {
-      const remoteFlashcard = flashcard.flashcard as any;
-      const question = generateRandomQuestion(remoteFlashcard);
-      setCurrentQuestion(question);
-    } else {
-      // For user flashcards, create a simple question
-      const userFlashcard = flashcard.flashcard as any;
-      const question: FlashcardQuestion = {
-        questionType: 'hebrew',
-        question: userFlashcard.front,
-        answer1: userFlashcard.back,
-        answer2: 'Incorrect answer',
-        frequency: 1,
-        hebrew: userFlashcard.hebrew,
-      };
-      setCurrentQuestion(question);
-    }
+    // All flashcards are now remote flashcards
+    const remoteFlashcard = flashcard.flashcard as any;
+    const question = generateRandomQuestion(remoteFlashcard);
+    setCurrentQuestion(question);
   };
 
   const handleNext = async () => {

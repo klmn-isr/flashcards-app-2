@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface FrequencySelectorProps {
   customFrequency: number | null;
@@ -9,7 +9,14 @@ export const FrequencySelector: React.FC<FrequencySelectorProps> = ({
   customFrequency,
   onCustomFrequencyChange
 }) => {
-  const [customInput, setCustomInput] = useState(customFrequency?.toString() || '');
+  const [customInput, setCustomInput] = useState(customFrequency?.toString() || '11.00');
+
+  // Set default frequency when component mounts and customFrequency is null
+  useEffect(() => {
+    if (customFrequency === null) {
+      onCustomFrequencyChange(11.00);
+    }
+  }, []); // Only run on mount
 
   const handleCustomFrequencyChange = (value: string) => {
     setCustomInput(value);

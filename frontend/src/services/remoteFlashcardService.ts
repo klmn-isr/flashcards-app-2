@@ -57,7 +57,7 @@ export async function getFlashcardsByType(type: Flashcard['type']): Promise<Remo
     collection(db, 'remoteFlashcards'),
     where('type', '==', type),
     where('isActive', '==', true),
-    orderBy('frequency', 'desc')
+    limit(1) // Limit to 1 document to minimize reads
   );
   
   const querySnapshot = await getDocs(q);
@@ -69,11 +69,12 @@ export async function getFlashcardsByType(type: Flashcard['type']): Promise<Remo
 
 // Get flashcards by frequency range
 export async function getFlashcardsByFrequency(minFrequency: number, maxFrequency: number): Promise<RemoteFlashcard[]> {
+  // Use only one inequality filter to avoid index requirements
   const q = query(
     collection(db, 'remoteFlashcards'),
     where('isActive', '==', true),
-    where('frequency', '>=', minFrequency),
-    where('frequency', '<=', maxFrequency)
+    where('frequency', '<=', maxFrequency), // Use maxFrequency as primary filter
+    limit(1) // Limit to 1 document to minimize reads
   );
   
   const querySnapshot = await getDocs(q);
@@ -89,7 +90,7 @@ export async function getFlashcardsByGender(gender: Flashcard['gender']): Promis
     collection(db, 'remoteFlashcards'),
     where('gender', '==', gender),
     where('isActive', '==', true),
-    orderBy('frequency', 'desc')
+    limit(1) // Limit to 1 document to minimize reads
   );
   
   const querySnapshot = await getDocs(q);
@@ -104,7 +105,7 @@ export async function searchFlashcards(searchTerm: string): Promise<RemoteFlashc
   const q = query(
     collection(db, 'remoteFlashcards'),
     where('isActive', '==', true),
-    orderBy('frequency', 'desc')
+    limit(1) // Limit to 1 document to minimize reads
   );
   
   const querySnapshot = await getDocs(q);
@@ -129,40 +130,29 @@ export async function getRandomFlashcards(count: number, filters?: {
   minFrequency?: number;
   maxFrequency?: number;
 }): Promise<RemoteFlashcard[]> {
-  // Build query with frequency filters
+  // Use the simplest possible query to avoid index requirements
   let q = query(
     collection(db, 'remoteFlashcards'),
     where('isActive', '==', true)
   );
   
-  // Add frequency filters if provided
-  if (filters?.minFrequency !== undefined) {
-    q = query(q, where('frequency', '>=', filters.minFrequency));
-  }
-  
+  // Only add frequency filter if maxFrequency is provided (most common case)
   if (filters?.maxFrequency !== undefined) {
     q = query(q, where('frequency', '<=', filters.maxFrequency));
   }
   
-  // Add other filters
-  if (filters?.type) {
-    q = query(q, where('type', '==', filters.type));
-  }
+  console.log('q', q);
+
+  // Get a small sample for variety while keeping reads low
+  const sampleQuery = query(q, orderBy('frequency', 'desc'), limit(1)); // Get 10 documents for variety
   
-  if (filters?.gender) {
-    q = query(q, where('gender', '==', filters.gender));
-  }
-  
-  // Get all flashcards matching the criteria
-  const querySnapshot = await getDocs(q);
+  const querySnapshot = await getDocs(sampleQuery);
   const allFlashcards = querySnapshot.docs.map(doc => ({
     id: doc.id,
     ...doc.data()
   })) as RemoteFlashcard[];
   
-  // Shuffle and return requested count
-  const shuffled = allFlashcards.sort(() => 0.5 - Math.random());
-  return shuffled.slice(0, count);
+  return allFlashcards;
 }
 
 // Get flashcard by ID
@@ -185,7 +175,8 @@ export async function getFlashcardStats(): Promise<{
 }> {
   const q = query(
     collection(db, 'remoteFlashcards'),
-    where('isActive', '==', true)
+    where('isActive', '==', true),
+    limit(1) // Limit to 1 document to minimize reads
   );
   
   const querySnapshot = await getDocs(q);
@@ -222,45 +213,36 @@ export async function getRandomFlashcard(filters?: {
   minFrequency?: number;
   maxFrequency?: number;
 }): Promise<RemoteFlashcard | null> {
-  // Build query with frequency filters
+  // Use the simplest possible query to avoid index requirements
   let q = query(
     collection(db, 'remoteFlashcards'),
     where('isActive', '==', true)
   );
   
-  // Add frequency filters if provided
-  if (filters?.minFrequency !== undefined) {
-    q = query(q, where('frequency', '>=', filters.minFrequency));
-  }
-  
+  // Only add frequency filter if maxFrequency is provided (most common case)
   if (filters?.maxFrequency !== undefined) {
     q = query(q, where('frequency', '<=', filters.maxFrequency));
   }
   
-  // Add other filters
-  if (filters?.type) {
-    q = query(q, where('type', '==', filters.type));
-  }
+  console.log('q', q);
+
+  // Get a small sample for variety while keeping reads low
+  const sampleQuery = query(q, orderBy('frequency', 'desc'), limit(1)); // Get 10 documents for variety
   
-  if (filters?.gender) {
-    q = query(q, where('gender', '==', filters.gender));
-  }
+  const querySnapshot = await getDocs(sampleQuery);
   
-  // Get all flashcards matching the criteria
-  const querySnapshot = await getDocs(q);
-  const flashcards = querySnapshot.docs.map(doc => ({
-    id: doc.id,
-    ...doc.data()
-  })) as RemoteFlashcard[];
-  
-  if (flashcards.length === 0) {
+  if (querySnapshot.empty) {
     return null;
   }
   
-  // Return a random flashcard from the matching results
-  const randomIndex = Math.floor(Math.random() * flashcards.length);
-  return flashcards[randomIndex];
-} 
+  // Return the single document
+  const doc = querySnapshot.docs[0];
+  
+  return {
+    id: doc.id,
+    ...doc.data()
+  } as RemoteFlashcard;
+}
 
 // Helper functions for frequency-based requests
 export async function getRandomFlashcardByMinFrequency(minFrequency: number): Promise<RemoteFlashcard | null> {
@@ -281,7 +263,7 @@ export async function getFlashcardsByMinFrequency(minFrequency: number): Promise
     collection(db, 'remoteFlashcards'),
     where('isActive', '==', true),
     where('frequency', '>=', minFrequency),
-    orderBy('frequency', 'desc')
+    limit(1) // Limit to 1 document to minimize reads
   );
   
   const querySnapshot = await getDocs(q);
@@ -293,11 +275,13 @@ export async function getFlashcardsByMinFrequency(minFrequency: number): Promise
 
 // Get flashcards by maximum frequency (equals or lower)
 export async function getFlashcardsByMaxFrequency(maxFrequency: number): Promise<RemoteFlashcard[]> {
+  console.log('getFlashcardsByMaxFrequency', maxFrequency);
+
   const q = query(
     collection(db, 'remoteFlashcards'),
     where('isActive', '==', true),
     where('frequency', '<=', maxFrequency),
-    orderBy('frequency', 'desc')
+    limit(1) // Limit to 1 document to minimize reads
   );
   
   const querySnapshot = await getDocs(q);
