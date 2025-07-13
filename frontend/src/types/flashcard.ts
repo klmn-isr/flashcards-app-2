@@ -17,4 +17,5 @@ export interface FlashcardQuestion {
   answer1: string;
   answer2: string;
   frequency: number;
+  hebrew: string;
 } 

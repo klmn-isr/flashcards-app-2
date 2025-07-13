@@ -1,11 +1,8 @@
-import { collection, addDoc, updateDoc, deleteDoc, doc, query, where, getDocs, orderBy, onSnapshot, limit } from 'firebase/firestore';
+import { collection, addDoc, doc, query, where, getDocs, orderBy, limit } from 'firebase/firestore';
 import { db, auth } from '../firebase';
 import type { Flashcard } from '../types/flashcard';
 import type { RemoteFlashcard } from './remoteFlashcardService';
-import { getRandomFlashcards, getRandomFlashcard, getFlashcardById as getRemoteFlashcardById } from './remoteFlashcardService';
-
-// Import frequency ranges from remote service
-import { FREQUENCY_RANGES, type FrequencyRange } from './remoteFlashcardService';
+import { getRandomFlashcards, getRandomFlashcard } from './remoteFlashcardService';
 
 export interface StudySession {
   id?: string;
@@ -124,25 +121,6 @@ export async function getRandomUnifiedFlashcard(filters?: {
     type: 'remote',
     flashcard: remoteFlashcard
   };
-}
-
-// Helper functions for frequency-based unified flashcard requests
-export async function getRandomUnifiedFlashcardByMinFrequency(minFrequency: number): Promise<UnifiedFlashcard | null> {
-  return getRandomUnifiedFlashcard({ minFrequency });
-}
-
-export async function getRandomUnifiedFlashcardByMaxFrequency(maxFrequency: number): Promise<UnifiedFlashcard | null> {
-  return getRandomUnifiedFlashcard({ maxFrequency });
-}
-
-export async function getRandomUnifiedFlashcardByFrequencyRange(minFrequency: number, maxFrequency: number): Promise<UnifiedFlashcard | null> {
-  return getRandomUnifiedFlashcard({ minFrequency, maxFrequency });
-}
-
-// Helper function for specific frequency ranges
-export async function getRandomUnifiedFlashcardByRange(range: FrequencyRange): Promise<UnifiedFlashcard | null> {
-  const { min, max } = FREQUENCY_RANGES[range];
-  return getRandomUnifiedFlashcardByFrequencyRange(min, max);
 }
 
 // Helper function for custom frequency (≤)

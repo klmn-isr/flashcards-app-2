@@ -4,8 +4,7 @@
   "description": "Hebrew Flashcards App with Firebase Backend",
   "private": true,
   "workspaces": [
-    "frontend",
-    "shared"
+    "frontend"
   ],
   "scripts": {
     "dev": "npm run dev:frontend",
@@ -14,7 +13,7 @@
     "build:frontend": "npm run build --workspace=frontend",
     "deploy": "npm run deploy:frontend",
     "deploy:frontend": "npm run deploy --workspace=frontend",
-    "install:all": "npm install && npm install --workspace=frontend && npm install --workspace=shared"
+    "install:all": "npm install && npm install --workspace=frontend"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"

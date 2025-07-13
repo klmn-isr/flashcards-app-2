@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { getRandomUnifiedFlashcard, getRandomUnifiedFlashcardByMaxFrequencyOnly } from '../services/unifiedFlashcardService';
 import type { UnifiedFlashcard } from '../services/unifiedFlashcardService';
 import type { FlashcardQuestion } from '../types/flashcard';
@@ -9,13 +9,11 @@ const DynamicStudy: React.FC = () => {
   const [currentFlashcard, setCurrentFlashcard] = useState<UnifiedFlashcard | null>(null);
   const [currentQuestion, setCurrentQuestion] = useState<FlashcardQuestion | null>(null);
   const [totalQuestions, setTotalQuestions] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [loadingNext, setLoadingNext] = useState(false);
   const [customFrequency, setCustomFrequency] = useState<number | null>(null);
-
-  useEffect(() => {
-    loadRandomFlashcard();
-  }, []); // Only load on initial mount, not on customFrequency change
+  const [minFrequency, setMinFrequency] = useState<number | null>(null);
+  const [isStarted, setIsStarted] = useState(false);
 
   const loadRandomFlashcard = async () => {
     try {
@@ -24,11 +22,16 @@ const DynamicStudy: React.FC = () => {
       let flashcard: UnifiedFlashcard | null = null;
       
       if (customFrequency !== null) {
-        // Use custom frequency (≤)
-        flashcard = await getRandomUnifiedFlashcardByMaxFrequencyOnly(customFrequency);
+        // Use custom frequency (≤) with min frequency
+        flashcard = await getRandomUnifiedFlashcard({ 
+          maxFrequency: customFrequency,
+          minFrequency: minFrequency || undefined
+        });
       } else {
-        // Use all frequencies
-        flashcard = await getRandomUnifiedFlashcard();
+        // Use all frequencies with min frequency
+        flashcard = await getRandomUnifiedFlashcard({ 
+          minFrequency: minFrequency || undefined
+        });
       }
       
       if (flashcard) {
@@ -56,11 +59,16 @@ const DynamicStudy: React.FC = () => {
       let flashcard: UnifiedFlashcard | null = null;
       
       if (customFrequency !== null) {
-        // Use custom frequency (≤)
-        flashcard = await getRandomUnifiedFlashcardByMaxFrequencyOnly(customFrequency);
+        // Use custom frequency (≤) with min frequency
+        flashcard = await getRandomUnifiedFlashcard({ 
+          maxFrequency: customFrequency,
+          minFrequency: minFrequency || undefined
+        });
       } else {
-        // Use all frequencies
-        flashcard = await getRandomUnifiedFlashcard();
+        // Use all frequencies with min frequency
+        flashcard = await getRandomUnifiedFlashcard({ 
+          minFrequency: minFrequency || undefined
+        });
       }
       
       if (flashcard) {
@@ -80,12 +88,50 @@ const DynamicStudy: React.FC = () => {
     // Don't reset question counter or reload flashcard on frequency change
   };
 
+  const handleMinFrequencyChange = (minFreq: number | null) => {
+    setMinFrequency(minFreq);
+  };
+
+
+
+  const handleStart = async () => {
+    setIsStarted(true);
+    await loadRandomFlashcard();
+  };
+
   if (loading) {
     return (
       <div className="max-w-2xl mx-auto p-6">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
           <p className="text-gray-600">Loading random flashcard from Firebase...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!isStarted) {
+    return (
+      <div className="max-w-4xl mx-auto p-6">
+        {/* Frequency Selector */}
+        <FrequencySelector 
+          customFrequency={customFrequency}
+          onCustomFrequencyChange={handleCustomFrequencyChange}
+          onMinFrequencyChange={handleMinFrequencyChange}
+        />
+
+        {/* Start Button */}
+        <div className="text-center mt-8">
+          <h2 className="text-3xl font-bold mb-6 text-gray-800">Hebrew Flashcards</h2>
+          <p className="text-gray-600 mb-8 text-lg">
+            Ready to start studying Hebrew? Click the button below to begin with your first flashcard.
+          </p>
+          <button
+            onClick={handleStart}
+            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg text-xl transition-colors duration-200 shadow-lg hover:shadow-xl"
+          >
+            Start Studying
+          </button>
         </div>
       </div>
     );
@@ -110,6 +156,7 @@ const DynamicStudy: React.FC = () => {
       <FrequencySelector 
         customFrequency={customFrequency}
         onCustomFrequencyChange={handleCustomFrequencyChange}
+        onMinFrequencyChange={handleMinFrequencyChange}
       />
 
       {/* Flashcard Component */}

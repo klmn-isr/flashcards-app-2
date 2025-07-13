@@ -32,7 +32,7 @@
 
 .flashcard-question {
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
   min-height: 60px;
   display: flex;
   align-items: center;
@@ -104,6 +104,33 @@
   border-color: #48bb78;
   color: white;
   box-shadow: 0 4px 16px rgba(72, 187, 120, 0.3);
+}
+
+.flashcard-context-link {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.context-link {
+  display: inline-flex;
+  align-items: center;
+  background: #f8f9fa;
+  color: #6c757d;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid #e9ecef;
+}
+
+.context-link:hover {
+  background: #e9ecef;
+  color: #495057;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .next-btn {
