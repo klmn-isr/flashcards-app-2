@@ -122,10 +122,6 @@ const DynamicStudy: React.FC = () => {
 
         {/* Start Button */}
         <div className="text-center mt-8">
-          <h2 className="text-3xl font-bold mb-6 text-gray-800">Hebrew Flashcards</h2>
-          <p className="text-gray-600 mb-8 text-lg">
-            Ready to start studying Hebrew? Click the button below to begin with your first flashcard.
-          </p>
           <button
             onClick={handleStart}
             className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg text-xl transition-colors duration-200 shadow-lg hover:shadow-xl"

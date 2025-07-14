@@ -7,6 +7,7 @@ export interface RemoteFlashcard extends Flashcard {
   isActive: boolean;
   category?: string;
   tags?: string[];
+  random?: number;
 }
 
 // Initialize remote flashcards in Firestore (run once)
@@ -105,16 +106,17 @@ export async function getRandomFlashcard(filters?: {
     // Get random value between min and max frequency
     const minFreq = filters.minFrequency || 10.14;
     const maxFreq = filters.maxFrequency;
+    const random = Math.random();
     const randomFreq = Number((Math.random() * (maxFreq - minFreq) + minFreq).toFixed(2));
-    console.log(randomFreq);
-    q = query(q, where('frequency', '<=', randomFreq));
+    console.log(randomFreq, random);
+    q = query(q, where('frequency', '<=', randomFreq), where('random', '<=', random));
     //q = query(q, where('frequency', '<=', filters.maxFrequency));
   }
   
   //console.log(filters);
 
   // Get a small sample for variety while keeping reads low
-  const sampleQuery = query(q, orderBy('frequency', 'desc'), limit(33)); // Get 10 documents for variety
+  const sampleQuery = query(q, orderBy('frequency', 'desc'), limit(1)); // Get 10 documents for variety
   
   const querySnapshot = await getDocs(sampleQuery);
   
@@ -185,5 +187,58 @@ export async function getHighestFrequency(): Promise<number | null> {
   } catch (error) {
     console.error('Error getting highest frequency:', error);
     return null;
+  }
+} 
+
+// Add random field to all flashcards
+export async function addRandomFieldToAllFlashcards(): Promise<void> {
+  try {
+    console.log('Starting to add random field to all flashcards...');
+    
+    // Get all flashcards from Firestore
+    const flashcardsRef = collection(db, 'remoteFlashcards');
+    const querySnapshot = await getDocs(flashcardsRef);
+    
+    if (querySnapshot.empty) {
+      console.log('No flashcards found in Firestore');
+      return;
+    }
+    
+    console.log(`Found ${querySnapshot.docs.length} flashcards to process`);
+    
+    // Process flashcards in batches to avoid memory issues
+    const batchSize = 500;
+    let processedCount = 0;
+    let updatedCount = 0;
+    
+    for (let i = 0; i < querySnapshot.docs.length; i += batchSize) {
+      const batch = writeBatch(db);
+      const batchDocs = querySnapshot.docs.slice(i, i + batchSize);
+      
+      for (const doc of batchDocs) {
+        const data = doc.data() as RemoteFlashcard;
+        
+        // Check if random field already exists
+        if (data.random === undefined) {
+          // Generate random value between 0.00000 and 1.00000
+          const randomValue = Number((Math.random()).toFixed(5));
+          
+          // Update the document with the random field
+          batch.update(doc.ref, { random: randomValue });
+          updatedCount++;
+        }
+        
+        processedCount++;
+      }
+      
+      // Commit the batch
+      await batch.commit();
+      console.log(`Processed batch ${Math.floor(i / batchSize) + 1}: ${processedCount}/${querySnapshot.docs.length} flashcards processed`);
+    }
+    
+    console.log(`Completed! Updated ${updatedCount} flashcards with random field out of ${processedCount} total flashcards`);
+  } catch (error) {
+    console.error('Error adding random field to flashcards:', error);
+    throw error;
   }
 } 

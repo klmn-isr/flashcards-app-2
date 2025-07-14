@@ -273,3 +273,23 @@
 .logout-btn:hover {
   background: #c82333;
 }
+
+.random-btn {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-right: 0.5rem;
+}
+
+.random-btn:hover {
+  background: #218838;
+}
+
+.random-btn:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+}

@@ -67,11 +67,9 @@ export const FrequencySelector: React.FC<FrequencySelectorProps> = ({
 
   return (
     <div className="mb-6 p-4 bg-gray-50 rounded-lg">
-      <h3 className="text-lg font-semibold mb-3 text-gray-800">Frequency Range</h3>
-      
+
       {/* Custom Frequency Input */}
-      <div className="mb-4">
-        <h4 className="text-sm font-medium mb-2 text-gray-700 text-center">Custom Frequency (≤):</h4>
+      <div className="mb-0">
         <div className="flex items-center justify-center gap-3">
           {/* Min Frequency Display */}
           <div className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
@@ -96,11 +94,7 @@ export const FrequencySelector: React.FC<FrequencySelectorProps> = ({
             {loading ? 'Loading...' : maxFrequency !== null ? `Max: ${maxFrequency.toFixed(2)}` : 'Max: N/A'}
           </div>
         </div>
-        
-        {/* Help text */}
-        <p className="text-xs text-gray-500 mt-2 text-center">
-          Lower values = more common words, Higher values = rarer words
-        </p>
+
       </div>
 
     </div>

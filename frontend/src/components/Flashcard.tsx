@@ -39,10 +39,26 @@ export function Flashcard({ question, onNext, loadingNext = false }: FlashcardPr
       <div className="flashcard-header">
         <span className="question-type">Частота: {loadingNext ? '...' : question.frequency.toFixed(2)}</span>
       </div>
-      
+                 
+      {/* Reverso Context Link */}
+      <div className="flashcard-context-link">
+        <a 
+          href={`https://context.reverso.net/translation/hebrew-english/${encodeURIComponent(question.hebrew)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="context-link"
+        >
+          <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+          View on Reverso Context
+        </a>
+      </div>
+           
       <div className="flashcard-question">
         <h2>{loadingNext ? '...' : question.question}</h2>
       </div>
+
 
       {!showAnswer ? (
         <div className="flashcard-actions">
@@ -56,23 +72,6 @@ export function Flashcard({ question, onNext, loadingNext = false }: FlashcardPr
         </div>
       ) : (
         <div className="flashcard-answers">
-
-          
-          {/* Reverso Context Link */}
-          <div className="flashcard-context-link">
-            <a 
-              href={`https://context.reverso.net/translation/hebrew-english/${encodeURIComponent(question.hebrew)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="context-link"
-            >
-              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-              View on Reverso Context
-            </a>
-          </div>
-
           <div className="answers-container">
             <button
               className={`answer-btn ${selectedAnswers.has('answer1') ? 'selected' : ''}`}
@@ -90,7 +89,6 @@ export function Flashcard({ question, onNext, loadingNext = false }: FlashcardPr
             </button>
           </div>
 
-          
           <div className="flashcard-actions">
             <button 
               className="next-btn"
