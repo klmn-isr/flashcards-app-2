@@ -161,7 +161,12 @@ const DynamicStudy: React.FC = () => {
           question={currentQuestion} 
           onNext={handleNext}
           loadingNext={loadingNext}
+          flashcardId={currentFlashcard.id}
         />
+        {/* Debug info */}
+        <div style={{ fontSize: '12px', color: '#666', textAlign: 'center', marginTop: '10px' }}>
+          Flashcard ID: {currentFlashcard.id}
+        </div>
       </div>
     </div>
   );

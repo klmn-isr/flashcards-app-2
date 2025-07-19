@@ -42,7 +42,8 @@ export async function initializeRemoteFlashcards(forceReinitialize: boolean = fa
         tags: [flashcard.type, flashcard.gender]
       };
       
-      const docRef = doc(flashcardsRef);
+      // Use the original flashcard ID as the document ID
+      const docRef = doc(flashcardsRef, flashcard.id);
       writeBatchInstance.set(docRef, remoteFlashcard);
     });
     
