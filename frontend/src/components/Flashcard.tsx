@@ -43,7 +43,7 @@ export function Flashcard({ question, onNext, loadingNext = false }: FlashcardPr
       {/* Reverso Context Link */}
       <div className="flashcard-context-link">
         <a 
-          href={`https://context.reverso.net/translation/hebrew-english/${encodeURIComponent(question.hebrew)}`}
+          href={`https://context.reverso.net/translation/hebrew-russian/${encodeURIComponent(question.hebrew)}`}
           target="_blank"
           rel="noopener noreferrer"
           className="context-link"

@@ -3,24 +3,24 @@ import { useAuth } from './contexts/AuthContext'
 import Login from './components/Login'
 import Register from './components/Register'
 import DynamicStudy from './components/DynamicStudy'
-import { addRandomFieldToAllFlashcards } from './services/remoteFlashcardService'
+import { fixFrequency } from './services/remoteFlashcardService'
 import './App.css'
 
 function App() {
   const { currentUser, logout } = useAuth()
   const [showRegister, setShowRegister] = useState(false)
-  const [isProcessingRandom, setIsProcessingRandom] = useState(false)
+  const [isProcessingFixFrequency, setIsProcessingFixFrequency] = useState(false)
 
-  const handleAddRandomFields = async () => {
+  const handleFixFrequency = async () => {
     try {
-      setIsProcessingRandom(true)
-      await addRandomFieldToAllFlashcards()
-      alert('Successfully added random fields to all flashcards!')
+      setIsProcessingFixFrequency(true)
+      await fixFrequency()
+      //alert('Successfully read 20k words!')
     } catch (error) {
-      console.error('Error adding random fields:', error)
-      alert('Error adding random fields to flashcards. Check console for details.')
+      console.error('Error fixing frequency:', error)
+      alert('Error fixing frequency. Check console for details.')
     } finally {
-      setIsProcessingRandom(false)
+      setIsProcessingFixFrequency(false)
     }
   }
 
@@ -59,8 +59,6 @@ function App() {
     )
   }
 
-
-
   return (
     <div className="app">
       <header className="app-header">
@@ -68,11 +66,11 @@ function App() {
         <div className="stats">
           <div className="nav-buttons">
             <button 
-              onClick={handleAddRandomFields} 
-              disabled={isProcessingRandom}
+              onClick={handleFixFrequency} 
+              disabled={isProcessingFixFrequency}
               className="random-btn"
             >
-              {isProcessingRandom ? 'Processing...' : 'Add Random Fields'}
+              {isProcessingFixFrequency ? 'Processing...' : 'Fix Frequency'}
             </button>
             <button onClick={logout} className="logout-btn">Logout</button>
           </div>
