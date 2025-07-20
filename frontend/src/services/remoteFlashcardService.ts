@@ -4,7 +4,7 @@ import type { Flashcard } from '../types/flashcard';
 import he_50k from '../data/he_50k.txt?raw';
 
 export interface RemoteFlashcard extends Flashcard {
-  id: string;
+  originalId: string;
   isActive: boolean;
   category?: string;
   tags?: string[];
@@ -36,6 +36,7 @@ export async function initializeRemoteFlashcards(forceReinitialize: boolean = fa
     
     flashcardBatch.forEach((flashcard) => {
       const remoteFlashcard: RemoteFlashcard = {
+        originalId: flashcard.id,
         ...flashcard,
         isActive: true,
         category: 'basic',
@@ -79,7 +80,7 @@ export async function getRandomFlashcards(count: number, filters?: {
   
   const querySnapshot = await getDocs(sampleQuery);
   const allFlashcards = querySnapshot.docs.map(doc => ({
-    id: doc.id,
+    originalId: doc.id,
     ...doc.data()
   })) as RemoteFlashcard[];
   
@@ -139,8 +140,10 @@ export async function getRandomFlashcard(filters?: {
   }
   */
 
+  console.log(`New flashcard: ${doc.id}`);
+
   return {
-    id: doc.id,
+    originalId: doc.id,
     ...doc.data()
   } as RemoteFlashcard;
 }

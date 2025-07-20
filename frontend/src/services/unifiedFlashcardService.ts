@@ -5,7 +5,7 @@ import type { RemoteFlashcard } from './remoteFlashcardService';
 import { getRandomFlashcards, getRandomFlashcard } from './remoteFlashcardService';
 
 export interface StudySession {
-  id?: string;
+  originalId?: string;
   userId: string;
   remoteFlashcardIds: string[]; // Only remote flashcards
   startTime: Date;
@@ -49,7 +49,7 @@ export async function getUserStudySessions(): Promise<StudySession[]> {
 
   const querySnapshot = await getDocs(q);
   return querySnapshot.docs.map(doc => ({
-    id: doc.id,
+    originalId: doc.id,
     ...doc.data()
   })) as StudySession[];
 }
@@ -81,7 +81,7 @@ export async function getFlashcardsForStudy(
     const remoteFlashcards = await getRandomFlashcards(count, remoteFilters);
     remoteFlashcards.forEach(flashcard => {
       unified.push({
-        id: flashcard.id,
+        id: flashcard.originalId, // Use originalId as the id for UnifiedFlashcard
         type: 'remote',
         flashcard
       });
@@ -117,7 +117,7 @@ export async function getRandomUnifiedFlashcard(filters?: {
   
   // Return as unified flashcard
   return {
-    id: remoteFlashcard.id,
+    id: remoteFlashcard.originalId, // Use originalId as the id for UnifiedFlashcard
     type: 'remote',
     flashcard: remoteFlashcard
   };

@@ -70,6 +70,10 @@ export function Flashcard({ question, onNext, loadingNext = false, flashcardId }
 
   const handleNext = async () => {
     // Update Firestore if there are changes and flashcardId is provided
+
+    console.log('hasChanges:', hasChanges);
+    console.log('flashcardId:', flashcardId);
+
     if (hasChanges && flashcardId) {
       try {
         console.log('Attempting to update flashcard with ID:', flashcardId);
