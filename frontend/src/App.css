@@ -309,3 +309,25 @@
   background: #6c757d;
   cursor: not-allowed;
 }
+
+.reset-btn {
+  background: #ffc107;
+  color: #212529;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-right: 0.5rem;
+  font-weight: 500;
+}
+
+.reset-btn:hover {
+  background: #e0a800;
+}
+
+.reset-btn:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+  color: #fff;
+}

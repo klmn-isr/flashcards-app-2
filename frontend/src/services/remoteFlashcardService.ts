@@ -70,6 +70,9 @@ export async function getRandomFlashcards(count: number, filters?: {
     where('isActive', '==', true)
   );
   
+  // Filter out learned flashcards - only get unlearned ones
+  q = query(q, where('learned', '!=', true));
+  
   // Only add frequency filter if maxFrequency is provided (most common case)
   if (filters?.maxFrequency !== undefined) {
     q = query(q, where('frequency', '<=', filters.maxFrequency));
@@ -104,6 +107,9 @@ export async function getRandomFlashcard(filters?: {
     where('isActive', '==', true)
   );
   
+  // Filter out learned flashcards - only get unlearned ones
+  q = query(q, where('learned', '!=', true));
+  
   // Only add frequency filter if maxFrequency is provided (most common case)
   if (filters?.maxFrequency !== undefined) {
     // Get random value between min and max frequency
@@ -114,7 +120,10 @@ export async function getRandomFlashcard(filters?: {
     const random = Math.pow(Math.random(), 1); // This biases towards 1
     const randomFreq = Number((Math.random() * (maxFreq - minFreq) + minFreq).toFixed(2));
     console.log(randomFreq, random);
-    q = query(q, where('frequency', '<=', randomFreq), where('random', '<=', random));
+    q = query(q, 
+      where('frequency', '<=', randomFreq), 
+      where('random', '<=', random)
+    );
     //q = query(q, where('frequency', '<=', filters.maxFrequency));
   }
   
@@ -160,6 +169,7 @@ export async function getLowestFrequency(): Promise<number | null> {
     const q = query(
       collection(db, 'remoteFlashcards'),
       where('isActive', '==', true),
+      where('learned', '!=', true), // Filter out learned flashcards
       orderBy('frequency', 'asc'), // ascending order to get lowest first
       limit(1) // only get the first (lowest) document
     );
@@ -184,6 +194,7 @@ export async function getHighestFrequency(): Promise<number | null> {
     const q = query(
       collection(db, 'remoteFlashcards'),
       where('isActive', '==', true),
+      where('learned', '!=', true), // Filter out learned flashcards
       orderBy('frequency', 'desc'), // descending order to get highest first
       limit(1) // only get the first (highest) document
     );
@@ -280,6 +291,98 @@ export async function fixFrequency(): Promise<void> {
   } catch (error) {
     console.error('Error fixing frequency values:', error);
     throw error;
+  }
+}
+
+// Reset all flashcards (set learned field to false for all flashcards)
+export async function resetAllLearnedFlashcards(): Promise<void> {
+  try {
+    console.log('Starting to reset all flashcards...');
+    
+    // Get ALL active flashcards (not just learned ones)
+    const allFlashcardsQuery = query(
+      collection(db, 'remoteFlashcards'),
+      where('isActive', '==', true)
+    );
+    
+    const querySnapshot = await getDocs(allFlashcardsQuery);
+    
+    if (querySnapshot.empty) {
+      console.log('No flashcards found to reset');
+      return;
+    }
+    
+    console.log(`Found ${querySnapshot.docs.length} flashcards to reset`);
+    
+    // Update all flashcards in batches
+    const batchSize = 500;
+    let processedCount = 0;
+    let updatedCount = 0;
+    
+    for (let i = 0; i < querySnapshot.docs.length; i += batchSize) {
+      const batch = writeBatch(db);
+      const batchDocs = querySnapshot.docs.slice(i, i + batchSize);
+      
+      batchDocs.forEach((doc) => {
+        batch.update(doc.ref, { learned: false });
+        updatedCount++;
+      });
+      
+      await batch.commit();
+      processedCount += batchDocs.length;
+      console.log(`Reset batch ${Math.floor(i / batchSize) + 1}: ${batchDocs.length} flashcards`);
+    }
+    
+    console.log(`Completed! Reset ${updatedCount} flashcards (set learned field to false for all flashcards)`);
+  } catch (error) {
+    console.error('Error resetting flashcards:', error);
+    throw error;
+  }
+}
+
+// Get statistics about learned vs unlearned flashcards
+export async function getFlashcardStats(): Promise<{
+  total: number;
+  learned: number;
+  unlearned: number;
+  learnedPercentage: number;
+}> {
+  try {
+    // Get total flashcards
+    const totalQuery = query(
+      collection(db, 'remoteFlashcards'),
+      where('isActive', '==', true)
+    );
+    const totalSnapshot = await getDocs(totalQuery);
+    const total = totalSnapshot.size;
+
+    // Get learned flashcards
+    const learnedQuery = query(
+      collection(db, 'remoteFlashcards'),
+      where('isActive', '==', true),
+      where('learned', '==', true)
+    );
+    const learnedSnapshot = await getDocs(learnedQuery);
+    const learned = learnedSnapshot.size;
+
+    // Calculate unlearned
+    const unlearned = total - learned;
+    const learnedPercentage = total > 0 ? Math.round((learned / total) * 100) : 0;
+
+    return {
+      total,
+      learned,
+      unlearned,
+      learnedPercentage
+    };
+  } catch (error) {
+    console.error('Error getting flashcard stats:', error);
+    return {
+      total: 0,
+      learned: 0,
+      unlearned: 0,
+      learnedPercentage: 0
+    };
   }
 }
 

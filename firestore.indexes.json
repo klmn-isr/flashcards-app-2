@@ -19,6 +19,42 @@
       "queryScope": "COLLECTION",
       "fields": [
         {
+          "fieldPath": "isActive",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "learned",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "frequency",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "remoteFlashcards",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "isActive",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "learned",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "frequency",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "remoteFlashcards",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
           "fieldPath": "type",
           "order": "ASCENDING"
         },

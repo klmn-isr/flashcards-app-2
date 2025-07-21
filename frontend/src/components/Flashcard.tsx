@@ -17,6 +17,7 @@ export function Flashcard({ question, onNext, loadingNext = false, flashcardId }
   const [answer1Value, setAnswer1Value] = useState(question.answer1);
   const [answer2Value, setAnswer2Value] = useState(question.answer2);
   const [hasChanges, setHasChanges] = useState(false);
+  const [isLearned, setIsLearned] = useState(false);
 
   // Update state when question changes (new flashcard loaded)
   useEffect(() => {
@@ -25,6 +26,7 @@ export function Flashcard({ question, onNext, loadingNext = false, flashcardId }
     setAnswer1Value(question.answer1);
     setAnswer2Value(question.answer2);
     setHasChanges(false);
+    setIsLearned(false); // Reset learned status for new flashcard
   }, [question.question, question.answer1, question.answer2]);
 
   // Determine which fields are being used as answers based on question type
@@ -68,13 +70,17 @@ export function Flashcard({ question, onNext, loadingNext = false, flashcardId }
     setHasChanges(questionValue !== question.question || answer1Value !== question.answer1 || newValue !== question.answer2);
   };
 
+  const handleLearnedChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setIsLearned(e.target.checked);
+  };
+
   const handleNext = async () => {
     // Update Firestore if there are changes and flashcardId is provided
-
     console.log('hasChanges:', hasChanges);
     console.log('flashcardId:', flashcardId);
+    console.log('isLearned:', isLearned);
 
-    if (hasChanges && flashcardId) {
+    if ((hasChanges || isLearned) && flashcardId) {
       try {
         console.log('Attempting to update flashcard with ID:', flashcardId);
         const flashcardRef = doc(db, 'remoteFlashcards', flashcardId);
@@ -91,6 +97,9 @@ export function Flashcard({ question, onNext, loadingNext = false, flashcardId }
         if (answer2Value !== question.answer2) {
           updateData[answer2Field] = answer2Value;
         }
+        
+        // Always update the learned status
+        updateData.learned = isLearned;
         
         if (Object.keys(updateData).length > 0) {
           // Check if document exists before updating
@@ -148,7 +157,7 @@ export function Flashcard({ question, onNext, loadingNext = false, flashcardId }
       <div className="flashcard-header">
         <span className="question-type">Частота: {loadingNext ? '...' : question.frequency.toFixed(2)}</span>
       </div>
-                 
+                  
       {/* Reverso Context Link */}
       <div className="flashcard-context-link">
         <a 
@@ -174,7 +183,6 @@ export function Flashcard({ question, onNext, loadingNext = false, flashcardId }
           placeholder="Question"
         />
       </div>
-
 
       {!showAnswer ? (
         <div className="flashcard-actions">
@@ -205,6 +213,20 @@ export function Flashcard({ question, onNext, loadingNext = false, flashcardId }
               disabled={loadingNext}
               placeholder={`Original: ${question.answer2}`}
             />
+          </div>
+
+          {/* Learned Checkbox */}
+          <div className="learned-checkbox-container">
+            <label className="learned-checkbox-label">
+              <input
+                type="checkbox"
+                checked={isLearned}
+                onChange={handleLearnedChange}
+                disabled={loadingNext}
+                className="learned-checkbox"
+              />
+              <span className="learned-checkbox-text">Mark as learned</span>
+            </label>
           </div>
 
           <div className="flashcard-actions">

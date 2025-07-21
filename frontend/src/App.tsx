@@ -2,12 +2,13 @@ import { useState } from 'react'
 import { useAuth } from './contexts/AuthContext'
 import Login from './components/Login'
 import DynamicStudy from './components/DynamicStudy'
-import { fixFrequency } from './services/remoteFlashcardService'
+import { fixFrequency, resetAllLearnedFlashcards } from './services/remoteFlashcardService'
 import './App.css'
 
 function App() {
   const { currentUser, logout } = useAuth()
   const [isProcessingFixFrequency, setIsProcessingFixFrequency] = useState(false)
+  const [isResettingLearned, setIsResettingLearned] = useState(false)
 
   const handleFixFrequency = async () => {
     try {
@@ -19,6 +20,23 @@ function App() {
       alert('Error fixing frequency. Check console for details.')
     } finally {
       setIsProcessingFixFrequency(false)
+    }
+  }
+
+  const handleResetLearned = async () => {
+    if (!window.confirm('Are you sure you want to reset ALL flashcards? This will mark ALL cards as unlearned, regardless of their current learned status.')) {
+      return
+    }
+
+    try {
+      setIsResettingLearned(true)
+      await resetAllLearnedFlashcards()
+      alert('Successfully reset all flashcards!')
+    } catch (error) {
+      console.error('Error resetting flashcards:', error)
+      alert('Error resetting flashcards. Check console for details.')
+    } finally {
+      setIsResettingLearned(false)
     }
   }
 
@@ -54,6 +72,13 @@ function App() {
               className="random-btn"
             >
               {isProcessingFixFrequency ? 'Processing...' : 'Fix Frequency'}
+            </button>
+            <button 
+              onClick={handleResetLearned}
+              disabled={isResettingLearned}
+              className="reset-btn"
+            >
+              {isResettingLearned ? 'Resetting...' : 'Reset All'}
             </button>
             <button onClick={logout} className="logout-btn">Logout</button>
           </div>
