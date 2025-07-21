@@ -1,14 +1,12 @@
 import { useState } from 'react'
 import { useAuth } from './contexts/AuthContext'
 import Login from './components/Login'
-import Register from './components/Register'
 import DynamicStudy from './components/DynamicStudy'
 import { fixFrequency } from './services/remoteFlashcardService'
 import './App.css'
 
 function App() {
   const { currentUser, logout } = useAuth()
-  const [showRegister, setShowRegister] = useState(false)
   const [isProcessingFixFrequency, setIsProcessingFixFrequency] = useState(false)
 
   const handleFixFrequency = async () => {
@@ -33,27 +31,12 @@ function App() {
         </header>
         
         <main className="app-main">
-          {showRegister ? (
-            <div>
-              <Register />
-              <button 
-                className="auth-toggle"
-                onClick={() => setShowRegister(false)}
-              >
-                Already have an account? Sign In
-              </button>
+          <div>
+            <Login />
+            <div className="auth-note">
+              <p>Sign up is currently disabled. Please contact the administrator for access.</p>
             </div>
-          ) : (
-            <div>
-              <Login />
-              <button 
-                className="auth-toggle"
-                onClick={() => setShowRegister(true)}
-              >
-                Need an account? Sign Up
-              </button>
-            </div>
-          )}
+          </div>
         </main>
       </div>
     )

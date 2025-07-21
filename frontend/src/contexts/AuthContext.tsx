@@ -27,16 +27,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   async function signUp(email: string, password: string) {
-    const result = await createUserWithEmailAndPassword(auth, email, password);
-    
-    // Create user profile in Firestore
-    await setDoc(doc(db, 'users', result.user.uid), {
-      email: result.user.email,
-      createdAt: new Date(),
-      lastLoginAt: new Date(),
-      totalCards: 0,
-      totalStudySessions: 0
-    });
+    // Registration is disabled
+    throw new Error('User registration is currently disabled. Please contact the administrator for access.');
   }
 
   async function signIn(email: string, password: string) {

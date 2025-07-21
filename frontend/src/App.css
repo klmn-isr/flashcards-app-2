@@ -231,6 +231,22 @@
   color: #0056b3;
 }
 
+.auth-note {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.auth-note p {
+  margin: 0;
+  color: #856404;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
 .nav-buttons {
   display: flex;
   gap: 8px;
