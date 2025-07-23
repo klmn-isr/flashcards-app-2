@@ -12,7 +12,7 @@ export const FrequencySelector: React.FC<FrequencySelectorProps> = ({
   onCustomFrequencyChange,
   onMinFrequencyChange
 }) => {
-  const [customInput, setCustomInput] = useState(customFrequency?.toString() || '11.00');
+  const [customInput, setCustomInput] = useState(customFrequency?.toString() || '16.00');
   const [minFrequency, setMinFrequency] = useState<number | null>(null);
   const [maxFrequency, setMaxFrequency] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
@@ -37,7 +37,7 @@ export const FrequencySelector: React.FC<FrequencySelectorProps> = ({
         
         // Set default frequency if customFrequency is null
         if (customFrequency === null) {
-          const defaultFreq = max ? Math.min(max, 11.00) : 11.00;
+          const defaultFreq = max ? Math.min(max, 16.00) : 16.00;
           onCustomFrequencyChange(defaultFreq);
           setCustomInput(defaultFreq.toString());
         }
@@ -45,7 +45,7 @@ export const FrequencySelector: React.FC<FrequencySelectorProps> = ({
         console.error('Error loading frequency range:', error);
         // Fallback to default if loading fails
         if (customFrequency === null) {
-          onCustomFrequencyChange(11.00);
+          onCustomFrequencyChange(16.00);
         }
       } finally {
         setLoading(false);

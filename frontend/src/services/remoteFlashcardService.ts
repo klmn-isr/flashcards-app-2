@@ -1,7 +1,6 @@
 import { collection, addDoc, getDocs, query, where, orderBy, limit, doc, getDoc, setDoc, writeBatch } from 'firebase/firestore';
 import { db } from '../firebase';
 import type { Flashcard } from '../types/flashcard';
-import he_50k from '../data/he_50k.txt?raw';
 
 export interface RemoteFlashcard extends Flashcard {
   originalId: string;
@@ -140,14 +139,6 @@ export async function getRandomFlashcard(filters?: {
   
   // Return the single document
   const doc = querySnapshot.docs[Math.floor(Math.random() * querySnapshot.docs.length)];
-  // Get actual frequency from he_50k.txt
-
-  /*
-  const realFrequency = await getRealFrequency(doc.data().hebrew);
-  if (realFrequency) {
-    console.log(`Real frequency for ${doc.data().hebrew}: ${realFrequency}`);
-  }
-  */
 
   console.log(`New flashcard: ${doc.id}`);
 
@@ -213,86 +204,9 @@ export async function getHighestFrequency(): Promise<number | null> {
   }
 } 
 
-// Get real frequency from Firestore words collection
-export async function getRealFrequency(hebrew: string): Promise<number | null> {
-  try {
-    //console.log(`Searching for frequency of: ${hebrew}`);
-    
-    // Get all documents from the words collection
-    const wordsRef = collection(db, 'words');
-    const querySnapshot = await getDocs(wordsRef);
-    
-    if (querySnapshot.empty) {
-      console.log('No documents found in words collection');
-      return null;
-    }
-    
-    // Search through all documents in the words collection
-    for (const doc of querySnapshot.docs) {
-      const data = doc.data();
-      if (data.frequencies && typeof data.frequencies === 'object') {
-        // Check if the Hebrew word exists in this document's frequencies
-        if (hebrew in data.frequencies) {
-          const frequency = data.frequencies[hebrew];
-          //console.log(`Found frequency for ${hebrew}: ${frequency} in document ${doc.id}`);
-          return frequency;
-        }
-      }
-    }
-    
-    console.log(`No frequency found for: ${hebrew}`);
-    return null;
-  } catch (error) {
-    console.error('Error getting real frequency:', error);
-    return null;
-  }
-}
 
-// Fix frequency values in Firestore by updating with real frequencies
-export async function fixFrequency(): Promise<void> {
-  try {
-    console.log('Starting to fix frequency values...');
-    
-    // Get all flashcards from Firestore
-    const flashcardsRef = collection(db, 'remoteFlashcards');
-    const querySnapshot = await getDocs(flashcardsRef);
-    
-    if (querySnapshot.empty) {
-      console.log('No flashcards found in Firestore');
-      return;
-    }
-    
-    console.log(`Found ${querySnapshot.docs.length} flashcards to process`);
-    
-    let processedCount = 0;
-    let updatedCount = 0;
-    
-    // Process flashcards one by one
-    for (const doc of querySnapshot.docs) {
-      const data = doc.data() as RemoteFlashcard;
-      
-      // Get real frequency for this Hebrew word
-      const realFrequency = await getRealFrequency(data.hebrew);
-      
-      if (realFrequency !== null && realFrequency !== data.frequency) {
-        // Update the document with the real frequency
-        await setDoc(doc.ref, { frequency: realFrequency }, { merge: true });
-        updatedCount++;
-        console.log(`Updated frequency for ${data.hebrew}: ${data.frequency} -> ${realFrequency}`);
-      }
-      
-      processedCount++;
-      if (processedCount % 100 === 0) {
-        console.log(`Processed ${processedCount}/${querySnapshot.docs.length} flashcards`);
-      }
-    }
-    
-    console.log(`Completed! Updated ${updatedCount} flashcards with real frequency values out of ${processedCount} total flashcards`);
-  } catch (error) {
-    console.error('Error fixing frequency values:', error);
-    throw error;
-  }
-}
+
+
 
 // Reset all flashcards (set learned field to false for all flashcards)
 export async function resetAllLearnedFlashcards(): Promise<void> {
@@ -386,82 +300,4 @@ export async function getFlashcardStats(): Promise<{
   }
 }
 
-// Add random field to all flashcards
-export async function read20kWords(): Promise<void> {
-  try {
-    console.log('Starting to read 20k words...');
-    const batchSize = 10000;
-    for (let i = 0; i < 5; i++) {
-      const start = i * batchSize;
-      const end = start + batchSize - 1;
-      // Split into lines and parse first 20k entries
-      const lines = he_50k.split('\n').slice(start, end);
-      // Create frequency map
-      const frequencyMap: Record<string, number> = {};
-      // Parse each line into word and frequency
-      lines.forEach(line => {
-        //console.log(line);
-        let [word, freq] = line.trim().split(' ');
-        if (word && freq) {
-          let freqInt = parseInt(freq);
-          // Trim trailing period from word if present
-          word = word.replace(/[0-9]/g, '') // Remove numbers
-                    .replace(/[a-zA-Z]/g, '') // Remove English letters                   
-                    .replace(/^[.-]|[.-]$/, '') // Remove leading and trailing periods
-                    .replace(/[\u0591-\u05C7]/g, '') // Remove nikud
-                    .replace(/\u05B8\u05D0/g, 'א')  // Normalize alef
-                    .replace(/\u05B5\u05D1/g, 'ב')  // Normalize bet
-                    .replace(/\u05B7\u05D2/g, 'ג')  // Normalize gimel
-                    .replace(/\u05B8\u05D3/g, 'ד') // Normalize dalet
-                    .replace(/\u05B9\u05D4/g, 'ה') // Normalize he
-                    .replace(/\u05B9\u05D5/g, 'ו') // Normalize vav
-                    .replace(/\u05B9\u05D6/g, 'ז') // Normalize zayin
-                    .replace(/\u05B9\u05D7/g, 'ח') // Normalize he
-                    .replace(/\u05B9\u05D8/g, 'ט') // Normalize tet
-                    .replace(/\u05B9\u05D9/g, 'י') // Normalize yod
-                    .replace(/\u05B9\u05DA/g, 'כ') // Normalize kaf
-                    .replace(/\u05B9\u05DB/g, 'ל') // Normalize lamed
-                    .replace(/\u05B9\u05DC/g, 'מ') // Normalize mem
-                    .replace(/\u05B9\u05DD/g, 'ם') // Normalize mem sofit
-                    .replace(/\u05B9\u05DE/g, 'נ') // Normalize nun
-                    .replace(/\u05B9\u05DF/g, 'ן') // Normalize nun sofit
-                    .replace(/\u05B9\u05DE/g, 'ס') // Normalize samekh
-                    .replace(/\u05B9\u05DF/g, 'ע') // Normalize ayin
-                    .replace(/\u05B9\u05E0/g, 'פ') // Normalize pe
-                    .replace(/\u05B9\u05E7/g, 'ף') // Normalize pe sofit
-                    .replace(/\u05B9\u05E1/g, 'צ') // Normalize tsadi
-                    .replace(/\u05B9\u05E8/g, 'ץ') // Normalize tsadi sofit
-                    .replace(/\u05B9\u05E2/g, 'ק') // Normalize qof
-                    .replace(/\u05B9\u05E3/g, 'ר') // Normalize resh
-                    .replace(/\u05B9\u05E4/g, 'ש') // Normalize shin
-                    .replace(/\u05B9\u05E5/g, 'ת') // Normalize tav
-                    .replace(/\u05B9\u05E6/g, 'ך') // Normalize kaf
-                    
-          // Check if word contains Hebrew characters (Unicode range: 0x0590-0x05FF)
-          const isHebrew = /[\u0590-\u05FF]/.test(word);
-          if (isHebrew) frequencyMap[word] = frequencyMap[word] ? freqInt + frequencyMap[word] : freqInt;
-        }
-      });
-
-      // Map frequency values to log scale
-      Object.keys(frequencyMap).forEach(word => {
-        frequencyMap[word] = Number(Math.log(frequencyMap[word]).toFixed(2));
-      });
-      //console.log(frequencyMap);
-
-      /*
-      // Save frequency map to Firestore
-      const wordsRef = doc(db, 'words', i.toString());
-      await setDoc(wordsRef, { frequencies: frequencyMap });
-      console.log('Saved frequency map to Firestore');
-      */
-
-    }
-
-    console.log(`Completed! Read 20k words!`);
-    //console.log(frequencyMap);
-  } catch (error) {
-    console.error('Error reading 20k words:', error);
-    throw error;
-  }
-} 
+ 

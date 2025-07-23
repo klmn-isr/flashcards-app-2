@@ -2,26 +2,12 @@ import { useState } from 'react'
 import { useAuth } from './contexts/AuthContext'
 import Login from './components/Login'
 import DynamicStudy from './components/DynamicStudy'
-import { fixFrequency, resetAllLearnedFlashcards } from './services/remoteFlashcardService'
+import { resetAllLearnedFlashcards } from './services/remoteFlashcardService'
 import './App.css'
 
 function App() {
   const { currentUser, logout } = useAuth()
-  const [isProcessingFixFrequency, setIsProcessingFixFrequency] = useState(false)
   const [isResettingLearned, setIsResettingLearned] = useState(false)
-
-  const handleFixFrequency = async () => {
-    try {
-      setIsProcessingFixFrequency(true)
-      await fixFrequency()
-      //alert('Successfully read 20k words!')
-    } catch (error) {
-      console.error('Error fixing frequency:', error)
-      alert('Error fixing frequency. Check console for details.')
-    } finally {
-      setIsProcessingFixFrequency(false)
-    }
-  }
 
   const handleResetLearned = async () => {
     if (!window.confirm('Are you sure you want to reset ALL flashcards? This will mark ALL cards as unlearned, regardless of their current learned status.')) {
@@ -66,13 +52,6 @@ function App() {
         <h1>Hebrew Flashcards</h1>
         <div className="stats">
           <div className="nav-buttons">
-            <button 
-              onClick={handleFixFrequency} 
-              disabled={isProcessingFixFrequency}
-              className="random-btn"
-            >
-              {isProcessingFixFrequency ? 'Processing...' : 'Fix Frequency'}
-            </button>
             <button 
               onClick={handleResetLearned}
               disabled={isResettingLearned}
