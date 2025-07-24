@@ -1,0 +1,1702 @@
+[
+  {
+    "id": "901",
+    "type": "preposition",
+    "gender": "common",
+    "root": "הפנים",
+    "frequency": 9.86,
+    "hebrew": "הפנים",
+    "transcription": "hапаним",
+    "translation": "лица",
+    "isActive": true,
+    "learned": false,
+    "random": 0.4809,
+    "tags": [
+      "preposition",
+      "common"
+    ]
+  },
+  {
+    "id": "902",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "שוטר",
+    "frequency": 9.86,
+    "hebrew": "שוטר",
+    "transcription": "шотэр",
+    "translation": "полицейский",
+    "isActive": true,
+    "learned": false,
+    "random": 0.99593,
+    "tags": [
+      "noun",
+      "masculine"
+    ]
+  },
+  {
+    "id": "903",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "שנינו",
+    "frequency": 9.86,
+    "hebrew": "שנינו",
+    "transcription": "шнэйну",
+    "translation": "мы оба",
+    "isActive": true,
+    "learned": false,
+    "random": 0.99126,
+    "tags": [
+      "noun",
+      "masculine"
+    ]
+  },
+  {
+    "id": "904",
+    "type": "verb",
+    "gender": "common",
+    "root": "להחזיר",
+    "frequency": 9.86,
+    "hebrew": "להחזיר",
+    "transcription": "лэhахзир",
+    "translation": "вернуть",
+    "isActive": true,
+    "learned": false,
+    "random": 0.97699,
+    "tags": [
+      "verb",
+      "common"
+    ]
+  },
+  {
+    "id": "905",
+    "type": "verb",
+    "gender": "common",
+    "root": "מערכת",
+    "frequency": 9.86,
+    "hebrew": "מערכת",
+    "transcription": "маарэхэт",
+    "translation": "система",
+    "isActive": true,
+    "learned": false,
+    "random": 0.1654,
+    "tags": [
+      "verb",
+      "common"
+    ]
+  },
+  {
+    "id": "906",
+    "type": "verb",
+    "gender": "common",
+    "root": "מצוות",
+    "frequency": 9.85,
+    "hebrew": "מצוות",
+    "transcription": "мицвот",
+    "translation": "заповеди",
+    "isActive": true,
+    "learned": false,
+    "random": 0.07028,
+    "tags": [
+      "verb",
+      "common"
+    ]
+  },
+  {
+    "id": "907",
+    "type": "verb",
+    "gender": "common",
+    "root": "להודות",
+    "frequency": 9.85,
+    "hebrew": "להודות",
+    "transcription": "лэhодот",
+    "translation": "благодарить",
+    "isActive": true,
+    "learned": false,
+    "random": 0.88776,
+    "tags": [
+      "verb",
+      "common"
+    ]
+  },
+  {
+    "id": "908",
+    "type": "noun",
+    "gender": "feminine",
+    "root": "שבועות",
+    "frequency": 9.85,
+    "hebrew": "שבועות",
+    "transcription": "шавуот",
+    "translation": "недели",
+    "isActive": true,
+    "learned": false,
+    "random": 0.81127,
+    "tags": [
+      "noun",
+      "feminine"
+    ]
+  },
+  {
+    "id": "909",
+    "type": "verb",
+    "gender": "common",
+    "root": "מתוך",
+    "frequency": 9.85,
+    "hebrew": "מתוך",
+    "transcription": "митох",
+    "translation": "из",
+    "isActive": true,
+    "learned": false,
+    "random": 0.98795,
+    "tags": [
+      "verb",
+      "common"
+    ]
+  },
+  {
+    "id": "910",
+    "type": "verb",
+    "gender": "common",
+    "root": "לתפוס",
+    "frequency": 9.85,
+    "hebrew": "לתפוס",
+    "transcription": "литофэс",
+    "translation": "ловить",
+    "isActive": true,
+    "learned": false,
+    "random": 0.18971,
+    "tags": [
+      "verb",
+      "common"
+    ]
+  },
+  {
+    "id": "911",
+    "type": "verb",
+    "gender": "common",
+    "root": "לפגוע",
+    "frequency": 9.85,
+    "hebrew": "לפגוע",
+    "transcription": "лифгоа",
+    "translation": "ранить",
+    "isActive": true,
+    "learned": false,
+    "random": 0.90702,
+    "tags": [
+      "verb",
+      "common"
+    ]
+  },
+  {
+    "id": "912",
+    "type": "verb",
+    "gender": "common",
+    "root": "מיוחד",
+    "frequency": 9.85,
+    "hebrew": "מיוחד",
+    "transcription": "мэюхад",
+    "translation": "особенный",
+    "isActive": true,
+    "learned": false,
+    "random": 0.42106,
+    "tags": [
+      "verb",
+      "common"
+    ]
+  },
+  {
+    "id": "913",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "רוב",
+    "frequency": 9.85,
+    "hebrew": "רוב",
+    "transcription": "ров",
+    "translation": "большинство",
+    "isActive": true,
+    "learned": false,
+    "random": 0.30857,
+    "tags": [
+      "noun",
+      "masculine"
+    ]
+  },
+  {
+    "id": "914",
+    "type": "verb",
+    "gender": "common",
+    "root": "לבחור",
+    "frequency": 9.85,
+    "hebrew": "לבחור",
+    "transcription": "ливхор",
+    "translation": "выбирать",
+    "isActive": true,
+    "learned": false,
+    "random": 0.30614,
+    "tags": [
+      "verb",
+      "common"
+    ]
+  },
+  {
+    "id": "915",
+    "type": "letter",
+    "gender": "common",
+    "root": "ז",
+    "frequency": 9.85,
+    "hebrew": "ז",
+    "transcription": "зайн",
+    "translation": "зайн",
+    "isActive": true,
+    "learned": false,
+    "random": 0.13388,
+    "tags": [
+      "letter",
+      "common"
+    ]
+  },
+  {
+    "id": "916",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "טיפש",
+    "frequency": 9.84,
+    "hebrew": "טיפש",
+    "transcription": "типэш",
+    "translation": "глупый",
+    "isActive": true,
+    "learned": false,
+    "random": 0.46359,
+    "tags": [
+      "noun",
+      "masculine"
+    ]
+  },
+  {
+    "id": "917",
+    "type": "preposition",
+    "gender": "common",
+    "root": "אלינו",
+    "frequency": 9.84,
+    "hebrew": "אלינו",
+    "transcription": "элэйну",
+    "translation": "к нам",
+    "isActive": true,
+    "learned": false,
+    "random": 0.92948,
+    "tags": [
+      "preposition",
+      "common"
+    ]
+  },
+  {
+    "id": "918",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "במצב",
+    "frequency": 9.84,
+    "hebrew": "במצב",
+    "transcription": "бэмацав",
+    "translation": "в ситуации",
+    "isActive": true,
+    "learned": false,
+    "random": 0.27608,
+    "tags": [
+      "noun",
+      "masculine"
+    ]
+  },
+  {
+    "id": "919",
+    "type": "preposition",
+    "gender": "common",
+    "root": "אחזור",
+    "frequency": 9.84,
+    "hebrew": "אחזור",
+    "transcription": "ахзор",
+    "translation": "вернусь",
+    "isActive": true,
+    "learned": false,
+    "random": 0.5934,
+    "tags": [
+      "preposition",
+      "common"
+    ]
+  },
+  {
+    "id": "920",
+    "type": "adjective",
+    "gender": "masculine",
+    "root": "תעשי",
+    "frequency": 9.84,
+    "hebrew": "תעשי",
+    "transcription": "тааси",
+    "translation": "делай",
+    "isActive": true,
+    "learned": false,
+    "random": 0.31657,
+    "tags": [
+      "adjective",
+      "masculine"
+    ]
+  },
+  {
+    "id": "921",
+    "type": "noun",
+    "gender": "feminine",
+    "root": "שמה",
+    "frequency": 9.84,
+    "hebrew": "שמה",
+    "transcription": "шама",
+    "translation": "там",
+    "isActive": true,
+    "learned": false,
+    "random": 0.15728,
+    "tags": [
+      "noun",
+      "feminine"
+    ]
+  },
+  {
+    "id": "922",
+    "type": "verb",
+    "gender": "common",
+    "root": "מכן",
+    "frequency": 9.84,
+    "hebrew": "מכן",
+    "transcription": "михэн",
+    "translation": "от вас",
+    "isActive": true,
+    "learned": false,
+    "random": 0.73299,
+    "tags": [
+      "verb",
+      "common"
+    ]
+  },
+  {
+    "id": "923",
+    "type": "preposition",
+    "gender": "common",
+    "root": "התינוק",
+    "frequency": 9.84,
+    "hebrew": "התינוק",
+    "transcription": "hатинок",
+    "translation": "младенец",
+    "isActive": true,
+    "learned": false,
+    "random": 0.35427,
+    "tags": [
+      "preposition",
+      "common"
+    ]
+  },
+  {
+    "id": "924",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "שנוכל",
+    "frequency": 9.83,
+    "hebrew": "שנוכל",
+    "transcription": "шэнухаль",
+    "translation": "чтобы мы могли",
+    "isActive": true,
+    "learned": false,
+    "random": 0.3317,
+    "tags": [
+      "noun",
+      "masculine"
+    ]
+  },
+  {
+    "id": "925",
+    "type": "verb",
+    "gender": "common",
+    "root": "להפוך",
+    "frequency": 9.83,
+    "hebrew": "להפוך",
+    "transcription": "лэhафох",
+    "translation": "перевернуть",
+    "isActive": true,
+    "learned": false,
+    "random": 0.48683,
+    "tags": [
+      "verb",
+      "common"
+    ]
+  },
+  {
+    "id": "926",
+    "type": "preposition",
+    "gender": "common",
+    "root": "אח",
+    "frequency": 9.83,
+    "hebrew": "אח",
+    "transcription": "ах",
+    "translation": "брат",
+    "isActive": true,
+    "learned": false,
+    "random": 0.83011,
+    "tags": [
+      "preposition",
+      "common"
+    ]
+  },
+  {
+    "id": "927",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "בחורים",
+    "frequency": 9.83,
+    "hebrew": "בחורים",
+    "transcription": "бахурим",
+    "translation": "парни",
+    "isActive": true,
+    "learned": false,
+    "random": 0.2652,
+    "tags": [
+      "noun",
+      "masculine"
+    ]
+  },
+  {
+    "id": "928",
+    "type": "preposition",
+    "gender": "common",
+    "root": "יורק",
+    "frequency": 9.83,
+    "hebrew": "יורק",
+    "transcription": "йорэк",
+    "translation": "плюет",
+    "isActive": true,
+    "learned": false,
+    "random": 0.47601,
+    "tags": [
+      "preposition",
+      "common"
+    ]
+  },
+  {
+    "id": "929",
+    "type": "verb",
+    "gender": "common",
+    "root": "נעלם",
+    "frequency": 9.82,
+    "hebrew": "נעלם",
+    "transcription": "нэлэм",
+    "translation": "исчез",
+    "isActive": true,
+    "learned": false,
+    "random": 0.9474,
+    "tags": [
+      "verb",
+      "common"
+    ]
+  },
+  {
+    "id": "930",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "רואים",
+    "frequency": 9.82,
+    "hebrew": "רואים",
+    "transcription": "роим",
+    "translation": "видят",
+    "isActive": true,
+    "learned": false,
+    "random": 0.62475,
+    "tags": [
+      "noun",
+      "masculine"
+    ]
+  },
+  {
+    "id": "931",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "טום",
+    "frequency": 9.82,
+    "hebrew": "טום",
+    "transcription": "том",
+    "translation": "Том",
+    "isActive": true,
+    "learned": false,
+    "random": 0.27034,
+    "tags": [
+      "noun",
+      "masculine"
+    ]
+  },
+  {
+    "id": "932",
+    "type": "verb",
+    "gender": "common",
+    "root": "מצוין",
+    "frequency": 9.82,
+    "hebrew": "מצוין",
+    "transcription": "мэцуян",
+    "translation": "отличный",
+    "isActive": true,
+    "learned": false,
+    "random": 0.12335,
+    "tags": [
+      "verb",
+      "common"
+    ]
+  },
+  {
+    "id": "933",
+    "type": "verb",
+    "gender": "common",
+    "root": "לגלות",
+    "frequency": 9.82,
+    "hebrew": "לגלות",
+    "transcription": "лиглот",
+    "translation": "открыть",
+    "isActive": true,
+    "learned": false,
+    "random": 0.90685,
+    "tags": [
+      "verb",
+      "common"
+    ]
+  },
+  {
+    "id": "934",
+    "type": "verb",
+    "gender": "common",
+    "root": "לכולם",
+    "frequency": 9.82,
+    "hebrew": "לכולם",
+    "transcription": "лэхулам",
+    "translation": "всем",
+    "isActive": true,
+    "learned": false,
+    "random": 0.21517,
+    "tags": [
+      "verb",
+      "common"
+    ]
+  },
+  {
+    "id": "935",
+    "type": "verb",
+    "gender": "common",
+    "root": "לחדר",
+    "frequency": 9.82,
+    "hebrew": "לחדר",
+    "transcription": "лахэдэр",
+    "translation": "в комнату",
+    "isActive": true,
+    "learned": false,
+    "random": 0.70567,
+    "tags": [
+      "verb",
+      "common"
+    ]
+  },
+  {
+    "id": "936",
+    "type": "preposition",
+    "gender": "common",
+    "root": "היד",
+    "frequency": 9.82,
+    "hebrew": "היד",
+    "transcription": "hаяд",
+    "translation": "рука",
+    "isActive": true,
+    "learned": false,
+    "random": 0.69031,
+    "tags": [
+      "preposition",
+      "common"
+    ]
+  },
+  {
+    "id": "937",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "שמו",
+    "frequency": 9.82,
+    "hebrew": "שמו",
+    "transcription": "шмо",
+    "translation": "его имя",
+    "isActive": true,
+    "learned": false,
+    "random": 0.53498,
+    "tags": [
+      "noun",
+      "masculine"
+    ]
+  },
+  {
+    "id": "938",
+    "type": "adjective",
+    "gender": "masculine",
+    "root": "בעצמי",
+    "frequency": 9.82,
+    "hebrew": "בעצמי",
+    "transcription": "бэатсми",
+    "translation": "сам",
+    "isActive": true,
+    "learned": false,
+    "random": 0.20634,
+    "tags": [
+      "adjective",
+      "masculine"
+    ]
+  },
+  {
+    "id": "939",
+    "type": "preposition",
+    "gender": "common",
+    "root": "יכולת",
+    "frequency": 9.81,
+    "hebrew": "יכולת",
+    "transcription": "йэхолет",
+    "translation": "способность",
+    "isActive": true,
+    "learned": false,
+    "random": 0.81601,
+    "tags": [
+      "preposition",
+      "common"
+    ]
+  },
+  {
+    "id": "940",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "תחזור",
+    "frequency": 9.81,
+    "hebrew": "תחזור",
+    "transcription": "тахзор",
+    "translation": "вернешься",
+    "isActive": true,
+    "learned": false,
+    "random": 0.70415,
+    "tags": [
+      "noun",
+      "masculine"
+    ]
+  },
+  {
+    "id": "941",
+    "type": "preposition",
+    "gender": "common",
+    "root": "הנכון",
+    "frequency": 9.81,
+    "hebrew": "הנכון",
+    "transcription": "hанахон",
+    "translation": "правильный",
+    "isActive": true,
+    "learned": false,
+    "random": 0.32893,
+    "tags": [
+      "preposition",
+      "common"
+    ]
+  },
+  {
+    "id": "942",
+    "type": "verb",
+    "gender": "common",
+    "root": "מתים",
+    "frequency": 9.81,
+    "hebrew": "מתים",
+    "transcription": "мэтим",
+    "translation": "мертвые",
+    "isActive": true,
+    "learned": false,
+    "random": 0.53085,
+    "tags": [
+      "verb",
+      "common"
+    ]
+  },
+  {
+    "id": "943",
+    "type": "noun",
+    "gender": "feminine",
+    "root": "טובות",
+    "frequency": 9.81,
+    "hebrew": "טובות",
+    "transcription": "товот",
+    "translation": "хорошие",
+    "isActive": true,
+    "learned": false,
+    "random": 0.89654,
+    "tags": [
+      "noun",
+      "feminine"
+    ]
+  },
+  {
+    "id": "944",
+    "type": "preposition",
+    "gender": "common",
+    "root": "אביך",
+    "frequency": 9.81,
+    "hebrew": "אביך",
+    "transcription": "авиха",
+    "translation": "твой отец",
+    "isActive": true,
+    "learned": false,
+    "random": 0.59881,
+    "tags": [
+      "preposition",
+      "common"
+    ]
+  },
+  {
+    "id": "945",
+    "type": "preposition",
+    "gender": "common",
+    "root": "אצטרך",
+    "frequency": 9.81,
+    "hebrew": "אצטרך",
+    "transcription": "эцтарэх",
+    "translation": "потребуется",
+    "isActive": true,
+    "learned": false,
+    "random": 0.98003,
+    "tags": [
+      "preposition",
+      "common"
+    ]
+  },
+  {
+    "id": "946",
+    "type": "verb",
+    "gender": "common",
+    "root": "להסביר",
+    "frequency": 9.81,
+    "hebrew": "להסביר",
+    "transcription": "лэhасбир",
+    "translation": "объяснить",
+    "isActive": true,
+    "learned": false,
+    "random": 0.42609,
+    "tags": [
+      "verb",
+      "common"
+    ]
+  },
+  {
+    "id": "947",
+    "type": "verb",
+    "gender": "common",
+    "root": "מישהי",
+    "frequency": 9.81,
+    "hebrew": "מישהי",
+    "transcription": "мишэhи",
+    "translation": "кто-то",
+    "isActive": true,
+    "learned": false,
+    "random": 0.02801,
+    "tags": [
+      "verb",
+      "common"
+    ]
+  },
+  {
+    "id": "948",
+    "type": "preposition",
+    "gender": "common",
+    "root": "הארץ",
+    "frequency": 9.81,
+    "hebrew": "הארץ",
+    "transcription": "hаарэц",
+    "translation": "земля",
+    "isActive": true,
+    "learned": false,
+    "random": 0.02292,
+    "tags": [
+      "preposition",
+      "common"
+    ]
+  },
+  {
+    "id": "949",
+    "type": "adjective",
+    "gender": "feminine",
+    "root": "שאמרת",
+    "frequency": 9.81,
+    "hebrew": "שאמרת",
+    "transcription": "шэамарта",
+    "translation": "что ты сказал",
+    "isActive": true,
+    "learned": false,
+    "random": 0.39401,
+    "tags": [
+      "adjective",
+      "feminine"
+    ]
+  },
+  {
+    "id": "950",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "תביא",
+    "frequency": 9.8,
+    "hebrew": "תביא",
+    "transcription": "тави",
+    "translation": "принеси",
+    "isActive": true,
+    "learned": false,
+    "random": 0.24057,
+    "tags": [
+      "noun",
+      "masculine"
+    ]
+  },
+  {
+    "id": "951",
+    "type": "preposition",
+    "gender": "common",
+    "root": "איתם",
+    "frequency": 9.8,
+    "hebrew": "איתם",
+    "transcription": "итам",
+    "translation": "с ними",
+    "isActive": true,
+    "learned": false,
+    "random": 0.98413,
+    "tags": [
+      "preposition",
+      "common"
+    ]
+  },
+  {
+    "id": "952",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "טלפון",
+    "frequency": 9.8,
+    "hebrew": "טלפון",
+    "transcription": "тэлэфон",
+    "translation": "телефон",
+    "isActive": true,
+    "learned": false,
+    "random": 0.45122,
+    "tags": [
+      "noun",
+      "masculine"
+    ]
+  },
+  {
+    "id": "953",
+    "type": "verb",
+    "gender": "common",
+    "root": "נצטרך",
+    "frequency": 9.8,
+    "hebrew": "נצטרך",
+    "transcription": "ництарэх",
+    "translation": "потребуется",
+    "isActive": true,
+    "learned": false,
+    "random": 0.61687,
+    "tags": [
+      "verb",
+      "common"
+    ]
+  },
+  {
+    "id": "954",
+    "type": "preposition",
+    "gender": "common",
+    "root": "ייתכן",
+    "frequency": 9.8,
+    "hebrew": "ייתכן",
+    "transcription": "йиткахэн",
+    "translation": "возможно",
+    "isActive": true,
+    "learned": false,
+    "random": 0.55182,
+    "tags": [
+      "preposition",
+      "common"
+    ]
+  },
+  {
+    "id": "955",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "שאנו",
+    "frequency": 9.8,
+    "hebrew": "שאנו",
+    "transcription": "шэану",
+    "translation": "что мы",
+    "isActive": true,
+    "learned": false,
+    "random": 0.10509,
+    "tags": [
+      "noun",
+      "masculine"
+    ]
+  },
+  {
+    "id": "956",
+    "type": "preposition",
+    "gender": "common",
+    "root": "השנה",
+    "frequency": 9.8,
+    "hebrew": "השנה",
+    "transcription": "hашана",
+    "translation": "год",
+    "isActive": true,
+    "learned": false,
+    "random": 0.2507,
+    "tags": [
+      "preposition",
+      "common"
+    ]
+  },
+  {
+    "id": "957",
+    "type": "letter",
+    "gender": "common",
+    "root": "ח",
+    "frequency": 9.8,
+    "hebrew": "ח",
+    "transcription": "хэт",
+    "translation": "хэт",
+    "isActive": true,
+    "learned": false,
+    "random": 0.4568,
+    "tags": [
+      "letter",
+      "common"
+    ]
+  },
+  {
+    "id": "958",
+    "type": "preposition",
+    "gender": "common",
+    "root": "הדם",
+    "frequency": 9.79,
+    "hebrew": "הדם",
+    "transcription": "hадам",
+    "translation": "кровь",
+    "isActive": true,
+    "learned": false,
+    "random": 0.08656,
+    "tags": [
+      "preposition",
+      "common"
+    ]
+  },
+  {
+    "id": "959",
+    "type": "verb",
+    "gender": "common",
+    "root": "לשנות",
+    "frequency": 9.79,
+    "hebrew": "לשנות",
+    "transcription": "лишнот",
+    "translation": "изменить",
+    "isActive": true,
+    "learned": false,
+    "random": 0.16976,
+    "tags": [
+      "verb",
+      "common"
+    ]
+  },
+  {
+    "id": "960",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "חבל",
+    "frequency": 9.79,
+    "hebrew": "חבל",
+    "transcription": "хаваль",
+    "translation": "жаль",
+    "isActive": true,
+    "learned": false,
+    "random": 0.16914,
+    "tags": [
+      "noun",
+      "masculine"
+    ]
+  },
+  {
+    "id": "961",
+    "type": "preposition",
+    "gender": "common",
+    "root": "אינני",
+    "frequency": 9.79,
+    "hebrew": "אינני",
+    "transcription": "эйнани",
+    "translation": "я не",
+    "isActive": true,
+    "learned": false,
+    "random": 0.00003,
+    "tags": [
+      "preposition",
+      "common"
+    ]
+  },
+  {
+    "id": "962",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "כבוד",
+    "frequency": 9.79,
+    "hebrew": "כבוד",
+    "transcription": "кавод",
+    "translation": "честь",
+    "isActive": true,
+    "learned": false,
+    "random": 0.46393,
+    "tags": [
+      "noun",
+      "masculine"
+    ]
+  },
+  {
+    "id": "963",
+    "type": "preposition",
+    "gender": "common",
+    "root": "המשפט",
+    "frequency": 9.79,
+    "hebrew": "המשפט",
+    "transcription": "hамишпат",
+    "translation": "приговор",
+    "isActive": true,
+    "learned": false,
+    "random": 0.93458,
+    "tags": [
+      "preposition",
+      "common"
+    ]
+  },
+  {
+    "id": "964",
+    "type": "preposition",
+    "gender": "common",
+    "root": "המוות",
+    "frequency": 9.79,
+    "hebrew": "המוות",
+    "transcription": "hамавэт",
+    "translation": "смерть",
+    "isActive": true,
+    "learned": false,
+    "random": 0.13329,
+    "tags": [
+      "preposition",
+      "common"
+    ]
+  },
+  {
+    "id": "965",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "רבים",
+    "frequency": 9.79,
+    "hebrew": "רבים",
+    "transcription": "рабим",
+    "translation": "многие",
+    "isActive": true,
+    "learned": false,
+    "random": 0.48223,
+    "tags": [
+      "noun",
+      "masculine"
+    ]
+  },
+  {
+    "id": "966",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "צא",
+    "frequency": 9.78,
+    "hebrew": "צא",
+    "transcription": "цэ",
+    "translation": "выйди",
+    "isActive": true,
+    "learned": false,
+    "random": 0.49499,
+    "tags": [
+      "noun",
+      "masculine"
+    ]
+  },
+  {
+    "id": "967",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "באמצע",
+    "frequency": 9.78,
+    "hebrew": "באמצע",
+    "transcription": "бээмца",
+    "translation": "посреди",
+    "isActive": true,
+    "learned": false,
+    "random": 0.10488,
+    "tags": [
+      "noun",
+      "masculine"
+    ]
+  },
+  {
+    "id": "968",
+    "type": "preposition",
+    "gender": "common",
+    "root": "יעשה",
+    "frequency": 9.78,
+    "hebrew": "יעשה",
+    "transcription": "йаасэ",
+    "translation": "сделает",
+    "isActive": true,
+    "learned": false,
+    "random": 0.56817,
+    "tags": [
+      "preposition",
+      "common"
+    ]
+  },
+  {
+    "id": "969",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "סלח",
+    "frequency": 9.78,
+    "hebrew": "סלח",
+    "transcription": "слах",
+    "translation": "извини",
+    "isActive": true,
+    "learned": false,
+    "random": 0.63245,
+    "tags": [
+      "noun",
+      "masculine"
+    ]
+  },
+  {
+    "id": "970",
+    "type": "preposition",
+    "gender": "common",
+    "root": "יימס",
+    "frequency": 9.78,
+    "hebrew": "יימס",
+    "transcription": "йимас",
+    "translation": "растает",
+    "isActive": true,
+    "learned": false,
+    "random": 0.05165,
+    "tags": [
+      "preposition",
+      "common"
+    ]
+  },
+  {
+    "id": "971",
+    "type": "verb",
+    "gender": "common",
+    "root": "נמצאת",
+    "frequency": 9.78,
+    "hebrew": "נמצאת",
+    "transcription": "нимцэт",
+    "translation": "находится",
+    "isActive": true,
+    "learned": false,
+    "random": 0.76011,
+    "tags": [
+      "verb",
+      "common"
+    ]
+  },
+  {
+    "id": "972",
+    "type": "verb",
+    "gender": "common",
+    "root": "לרגע",
+    "frequency": 9.78,
+    "hebrew": "לרגע",
+    "transcription": "ларэга",
+    "translation": "на мгновение",
+    "isActive": true,
+    "learned": false,
+    "random": 0.51391,
+    "tags": [
+      "verb",
+      "common"
+    ]
+  },
+  {
+    "id": "973",
+    "type": "preposition",
+    "gender": "common",
+    "root": "החלק",
+    "frequency": 9.78,
+    "hebrew": "החלק",
+    "transcription": "hахэлэк",
+    "translation": "часть",
+    "isActive": true,
+    "learned": false,
+    "random": 0.16262,
+    "tags": [
+      "preposition",
+      "common"
+    ]
+  },
+  {
+    "id": "974",
+    "type": "verb",
+    "gender": "common",
+    "root": "להשאיר",
+    "frequency": 9.78,
+    "hebrew": "להשאיר",
+    "transcription": "лэhашир",
+    "translation": "оставить",
+    "isActive": true,
+    "learned": false,
+    "random": 0.81993,
+    "tags": [
+      "verb",
+      "common"
+    ]
+  },
+  {
+    "id": "975",
+    "type": "noun",
+    "gender": "feminine",
+    "root": "שניות",
+    "frequency": 9.77,
+    "hebrew": "שניות",
+    "transcription": "шнийот",
+    "translation": "секунды",
+    "isActive": true,
+    "learned": false,
+    "random": 0.30353,
+    "tags": [
+      "noun",
+      "feminine"
+    ]
+  },
+  {
+    "id": "976",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "בנו",
+    "frequency": 9.77,
+    "hebrew": "בנו",
+    "transcription": "бану",
+    "translation": "наш сын",
+    "isActive": true,
+    "learned": false,
+    "random": 0.8195,
+    "tags": [
+      "noun",
+      "masculine"
+    ]
+  },
+  {
+    "id": "977",
+    "type": "noun",
+    "gender": "feminine",
+    "root": "שנייה",
+    "frequency": 9.77,
+    "hebrew": "שנייה",
+    "transcription": "шния",
+    "translation": "секунда",
+    "isActive": true,
+    "learned": false,
+    "random": 0.97043,
+    "tags": [
+      "noun",
+      "feminine"
+    ]
+  },
+  {
+    "id": "978",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "חכם",
+    "frequency": 9.77,
+    "hebrew": "חכם",
+    "transcription": "хахам",
+    "translation": "умный",
+    "isActive": true,
+    "learned": false,
+    "random": 0.58765,
+    "tags": [
+      "noun",
+      "masculine"
+    ]
+  },
+  {
+    "id": "979",
+    "type": "preposition",
+    "gender": "common",
+    "root": "הודעה",
+    "frequency": 9.77,
+    "hebrew": "הודעה",
+    "transcription": "hодаа",
+    "translation": "сообщение",
+    "isActive": true,
+    "learned": false,
+    "random": 0.95742,
+    "tags": [
+      "preposition",
+      "common"
+    ]
+  },
+  {
+    "id": "980",
+    "type": "adjective",
+    "gender": "masculine",
+    "root": "פני",
+    "frequency": 9.76,
+    "hebrew": "פני",
+    "transcription": "панэй",
+    "translation": "лица",
+    "isActive": true,
+    "learned": false,
+    "random": 0.49316,
+    "tags": [
+      "adjective",
+      "masculine"
+    ]
+  },
+  {
+    "id": "981",
+    "type": "verb",
+    "gender": "common",
+    "root": "מידי",
+    "frequency": 9.76,
+    "hebrew": "מידי",
+    "transcription": "мидай",
+    "translation": "сразу",
+    "isActive": true,
+    "learned": false,
+    "random": 0.75995,
+    "tags": [
+      "verb",
+      "common"
+    ]
+  },
+  {
+    "id": "982",
+    "type": "verb",
+    "gender": "common",
+    "root": "ליצור",
+    "frequency": 9.76,
+    "hebrew": "ליצור",
+    "transcription": "лицор",
+    "translation": "создать",
+    "isActive": true,
+    "learned": false,
+    "random": 0.20525,
+    "tags": [
+      "verb",
+      "common"
+    ]
+  },
+  {
+    "id": "983",
+    "type": "preposition",
+    "gender": "common",
+    "root": "הגיוני",
+    "frequency": 9.75,
+    "hebrew": "הגיוני",
+    "transcription": "hагийони",
+    "translation": "логичный",
+    "isActive": true,
+    "learned": false,
+    "random": 0.94666,
+    "tags": [
+      "preposition",
+      "common"
+    ]
+  },
+  {
+    "id": "984",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "תירגע",
+    "frequency": 9.75,
+    "hebrew": "תירגע",
+    "transcription": "тирга",
+    "translation": "успокойся",
+    "isActive": true,
+    "learned": false,
+    "random": 0.21725,
+    "tags": [
+      "noun",
+      "masculine"
+    ]
+  },
+  {
+    "id": "985",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "זין",
+    "frequency": 9.75,
+    "hebrew": "זין",
+    "transcription": "зайн",
+    "translation": "пенис",
+    "isActive": true,
+    "learned": false,
+    "random": 0.76397,
+    "tags": [
+      "noun",
+      "masculine"
+    ]
+  },
+  {
+    "id": "986",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "בעצמך",
+    "frequency": 9.75,
+    "hebrew": "בעצמך",
+    "transcription": "бэатсмэха",
+    "translation": "сам",
+    "isActive": true,
+    "learned": false,
+    "random": 0.95852,
+    "tags": [
+      "noun",
+      "masculine"
+    ]
+  },
+  {
+    "id": "987",
+    "type": "verb",
+    "gender": "common",
+    "root": "לברוח",
+    "frequency": 9.75,
+    "hebrew": "לברוח",
+    "transcription": "ливроах",
+    "translation": "бежать",
+    "isActive": true,
+    "learned": false,
+    "random": 0.31696,
+    "tags": [
+      "verb",
+      "common"
+    ]
+  },
+  {
+    "id": "988",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "בעצם",
+    "frequency": 9.75,
+    "hebrew": "בעצם",
+    "transcription": "бээцэм",
+    "translation": "собственно",
+    "isActive": true,
+    "learned": false,
+    "random": 0.63963,
+    "tags": [
+      "noun",
+      "masculine"
+    ]
+  },
+  {
+    "id": "989",
+    "type": "verb",
+    "gender": "common",
+    "root": "לבן",
+    "frequency": 9.75,
+    "hebrew": "לבן",
+    "transcription": "лаван",
+    "translation": "белый",
+    "isActive": true,
+    "learned": false,
+    "random": 0.72571,
+    "tags": [
+      "verb",
+      "common"
+    ]
+  },
+  {
+    "id": "990",
+    "type": "preposition",
+    "gender": "common",
+    "root": "האקדח",
+    "frequency": 9.75,
+    "hebrew": "האקדח",
+    "transcription": "hаэкедах",
+    "translation": "пистолет",
+    "isActive": true,
+    "learned": false,
+    "random": 0.49087,
+    "tags": [
+      "preposition",
+      "common"
+    ]
+  },
+  {
+    "id": "991",
+    "type": "preposition",
+    "gender": "common",
+    "root": "אכן",
+    "frequency": 9.75,
+    "hebrew": "אכן",
+    "transcription": "ахэн",
+    "translation": "действительно",
+    "isActive": true,
+    "learned": false,
+    "random": 0.14245,
+    "tags": [
+      "preposition",
+      "common"
+    ]
+  },
+  {
+    "id": "992",
+    "type": "preposition",
+    "gender": "common",
+    "root": "השבוע",
+    "frequency": 9.75,
+    "hebrew": "השבוע",
+    "transcription": "hашавуа",
+    "translation": "неделя",
+    "isActive": true,
+    "learned": false,
+    "random": 0.3476,
+    "tags": [
+      "preposition",
+      "common"
+    ]
+  },
+  {
+    "id": "993",
+    "type": "preposition",
+    "gender": "common",
+    "root": "יד",
+    "frequency": 9.75,
+    "hebrew": "יד",
+    "transcription": "яд",
+    "translation": "рука",
+    "isActive": true,
+    "learned": false,
+    "random": 0.43643,
+    "tags": [
+      "preposition",
+      "common"
+    ]
+  },
+  {
+    "id": "994",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "כולכם",
+    "frequency": 9.75,
+    "hebrew": "כולכם",
+    "transcription": "хулахэм",
+    "translation": "все вы",
+    "isActive": true,
+    "learned": false,
+    "random": 0.04436,
+    "tags": [
+      "noun",
+      "masculine"
+    ]
+  },
+  {
+    "id": "995",
+    "type": "preposition",
+    "gender": "common",
+    "root": "הנרי",
+    "frequency": 9.74,
+    "hebrew": "הנרי",
+    "transcription": "hэнри",
+    "translation": "Генри",
+    "isActive": true,
+    "learned": false,
+    "random": 0.47992,
+    "tags": [
+      "preposition",
+      "common"
+    ]
+  },
+  {
+    "id": "996",
+    "type": "verb",
+    "gender": "common",
+    "root": "מצפה",
+    "frequency": 9.74,
+    "hebrew": "מצפה",
+    "transcription": "мэцапэ",
+    "translation": "ждет",
+    "isActive": true,
+    "learned": false,
+    "random": 0.05712,
+    "tags": [
+      "verb",
+      "common"
+    ]
+  },
+  {
+    "id": "997",
+    "type": "preposition",
+    "gender": "common",
+    "root": "הרג",
+    "frequency": 9.74,
+    "hebrew": "הרג",
+    "transcription": "hараг",
+    "translation": "убил",
+    "isActive": true,
+    "learned": false,
+    "random": 0.10483,
+    "tags": [
+      "preposition",
+      "common"
+    ]
+  },
+  {
+    "id": "998",
+    "type": "preposition",
+    "gender": "common",
+    "root": "אהבתי",
+    "frequency": 9.74,
+    "hebrew": "אהבתי",
+    "transcription": "ахавти",
+    "translation": "я любил",
+    "isActive": true,
+    "learned": false,
+    "random": 0.66363,
+    "tags": [
+      "preposition",
+      "common"
+    ]
+  },
+  {
+    "id": "999",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "בסוף",
+    "frequency": 9.74,
+    "hebrew": "בסוף",
+    "transcription": "бэсоф",
+    "translation": "в конце",
+    "isActive": true,
+    "learned": false,
+    "random": 0.28206,
+    "tags": [
+      "noun",
+      "masculine"
+    ]
+  },
+  {
+    "id": "1000",
+    "type": "noun",
+    "gender": "masculine",
+    "root": "כלב",
+    "frequency": 9.74,
+    "hebrew": "כלב",
+    "transcription": "кэлэв",
+    "translation": "собака",
+    "isActive": true,
+    "learned": false,
+    "random": 0.20453,
+    "tags": [
+      "noun",
+      "masculine"
+    ]
+  }
+]
